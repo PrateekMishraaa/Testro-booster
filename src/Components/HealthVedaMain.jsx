@@ -28,6 +28,19 @@ const HealthVedaMain = () => {
   });
   const [timerActive, setTimerActive] = useState(true);
 
+  // Phone number for contact
+  const phoneNumber = "9211608061";
+  const whatsappMessage = "Hello, I'm interested in Testro Booster. Can you provide more information?";
+
+  // WhatsApp and Call functions
+  const handleWhatsAppClick = () => {
+    window.open(`https://wa.me/91${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+  };
+
+  const handleCallClick = () => {
+    window.location.href = `tel:+91${phoneNumber}`;
+  };
+
   useEffect(() => {
     // Check if age was already verified in session storage
     const verified = sessionStorage.getItem('ageVerified');
@@ -192,18 +205,18 @@ const HealthVedaMain = () => {
     }
   ];
 
-  // Image and Video Gallery Data
+  // Media Gallery Data - Removed duplicates, each image/video used only once
   const mediaGallery = [
-    { type: 'video', src: One, title: 'Before & After Transformation', desc: 'Real user results' },
-    { type: 'image', src: Two, title: 'Premium Packaging', desc: 'Hygienic & Secure' },
-    { type: 'image', src: Three, title: 'Natural Ingredients', desc: 'Pure & Potent' },
-    { type: 'video', src: Four, title: 'How It Works', desc: 'Mechanism explained' },
-    { type: 'image', src: Five, title: 'Capsule Close-up', desc: 'Easy to swallow' },
-    { type: 'image', src: Six, title: 'Quality Assurance', desc: 'Lab tested' },
-    { type: 'video', src: Seven, title: 'Customer Reviews', desc: 'Real testimonials' },
-    { type: 'video', src: Eight, title: 'Manufacturing Process', desc: 'GMP certified' },
-    { type: 'image', src: Nine, title: 'Results Timeline', desc: 'Expected progress' },
-    { type: 'video', src: Ten, title: 'Final Results', desc: 'Complete transformation' }
+    { type: 'video', src: One, title: 'Before & After Transformation', desc: 'Real user results', id: 'video-1' },
+    // { type: 'image', src: Two, title: 'Premium Packaging', desc: 'Hygienic & Secure', id: 'image-2' },
+    { type: 'image', src: Three, title: 'Natural Ingredients', desc: 'Pure & Potent', id: 'image-3' },
+    // { type: 'video', src: Four, title: 'How It Works', desc: 'Mechanism explained', id: 'video-4' },
+    { type: 'image', src: Five, title: 'Capsule Close-up', desc: 'Easy to swallow', id: 'image-5' },
+    // { type: 'image', src: Six, title: 'Quality Assurance', desc: 'Lab tested', id: 'image-6' },
+    // { type: 'video', src: Seven, title: 'Customer Reviews', desc: 'Real testimonials', id: 'video-7' },
+    // { type: 'video', src: Eight, title: 'Manufacturing Process', desc: 'GMP certified', id: 'video-8' },
+    // { type: 'image', src: Nine, title: 'Results Timeline', desc: 'Expected progress', id: 'image-9' },
+    // { type: 'video', src: Ten, title: 'Final Results', desc: 'Complete transformation', id: 'video-10' }
   ];
 
   // Don't render main content if age not verified or under 18
@@ -289,6 +302,27 @@ const HealthVedaMain = () => {
   // Main Content (only shown if age verified)
   return (
     <div className="min-h-screen bg-black">
+      {/* WhatsApp & Call Floating Buttons */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        {/* WhatsApp Button */}
+        <button
+          onClick={handleWhatsAppClick}
+          className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-2xl hover:shadow-green-500/30 transition-all hover:scale-110"
+          title="Chat on WhatsApp"
+        >
+          <span className="text-3xl">💬</span>
+        </button>
+        
+        {/* Call Button */}
+        <button
+          onClick={handleCallClick}
+          className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-2xl hover:shadow-blue-500/30 transition-all hover:scale-110"
+          title="Call Now"
+        >
+          <span className="text-3xl">📞</span>
+        </button>
+      </div>
+
       {/* Age Verified Indicator (small banner) */}
       <div className="bg-gradient-to-r from-green-800 to-green-600 text-white text-center py-2 text-sm">
         ✅ Age Verified | Welcome to Testro Booster
@@ -345,8 +379,11 @@ const HealthVedaMain = () => {
                 >
                   🟥 BUY NOW
                 </button>
-                <button className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition-all">
-                  KNOW MORE
+                <button 
+                  onClick={handleWhatsAppClick}
+                  className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition-all"
+                >
+                  📞 CONSULT NOW
                 </button>
               </div>
               
@@ -382,20 +419,20 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🎬 MEDIA GALLERY SECTION - Using One to Ten assets */}
+      {/* 🎬 MEDIA GALLERY SECTION */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
             See Testro Booster in Action
           </h2>
           <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            Visual proof of quality, results, and transformation from real users
+            Visual proof of quality, results, and transformation
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {mediaGallery.slice(0, 8).map((media, index) => (
               <div 
-                key={index}
+                key={media.id}
                 className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-300 hover:transform hover:-translate-y-1"
               >
                 <div className="relative aspect-video">
@@ -406,17 +443,17 @@ const HealthVedaMain = () => {
                         src={media.src}
                         muted
                         loop
-                        autoPlay={isPlaying[`video-${index}`]}
-                        poster={Two} // Using image 2 as poster
-                        onClick={() => toggleVideoPlay(`video-${index}`)}
+                        autoPlay={isPlaying[media.id]}
+                        poster={Two}
+                        onClick={() => toggleVideoPlay(media.id)}
                       />
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                         <button
-                          onClick={() => toggleVideoPlay(`video-${index}`)}
+                          onClick={() => toggleVideoPlay(media.id)}
                           className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-all"
                         >
                           <span className="text-white text-2xl">
-                            {isPlaying[`video-${index}`] ? '⏸️' : '▶️'}
+                            {isPlaying[media.id] ? '⏸️' : '▶️'}
                           </span>
                         </button>
                       </div>
@@ -443,9 +480,9 @@ const HealthVedaMain = () => {
           
           {/* Last two larger items */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-            {mediaGallery.slice(8, 10).map((media, index) => (
+            {mediaGallery.slice(8, 10).map((media) => (
               <div 
-                key={index + 8}
+                key={media.id}
                 className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-300"
               >
                 <div className="relative h-64 md:h-80">
@@ -456,9 +493,9 @@ const HealthVedaMain = () => {
                         src={media.src}
                         muted
                         loop
-                        autoPlay={isPlaying[`video-${index + 8}`]}
+                        autoPlay={isPlaying[media.id]}
                         poster={Nine}
-                        onClick={() => toggleVideoPlay(`video-${index + 8}`)}
+                        onClick={() => toggleVideoPlay(media.id)}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
                         <h3 className="text-white text-2xl font-bold mb-2">{media.title}</h3>
@@ -509,7 +546,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🔧 SOLUTION SECTION - Dawai Image Here */}
+      {/* 🔧 SOLUTION SECTION */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -561,7 +598,7 @@ const HealthVedaMain = () => {
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = Five; // Use image 5 as fallback
+                            e.target.src = Five;
                           }}
                         />
                       </div>
@@ -612,7 +649,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🌿 INGREDIENT SECTION with Multiple Images */}
+      {/* 🌿 INGREDIENT SECTION */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -621,7 +658,7 @@ const HealthVedaMain = () => {
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Left - Ingredients Grid with Images */}
+              {/* Left - Ingredients Grid */}
               <div>
                 <div className="mb-8">
                   <div className="bg-gradient-to-br from-gray-800 to-black p-6 rounded-xl border border-gray-700">
@@ -663,7 +700,7 @@ const HealthVedaMain = () => {
                 </div>
               </div>
               
-              {/* Right - Explanation with Image Grid */}
+              {/* Right - Explanation */}
               <div>
                 <div className="bg-gray-800 p-8 rounded-xl border border-gray-700 h-full">
                   <h3 className="text-2xl font-bold text-white mb-6">
@@ -798,7 +835,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 💊 HOW TO USE with Images */}
+      {/* 💊 HOW TO USE */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -885,7 +922,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* ⭐ TESTIMONIALS with Transformation Videos */}
+      {/* ⭐ TESTIMONIALS */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -910,15 +947,7 @@ const HealthVedaMain = () => {
                 
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center mr-4 overflow-hidden">
-                    {testimonial.image === '👤' ? (
-                      <span className="text-xl">{testimonial.image}</span>
-                    ) : (
-                      <img 
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover"
-                      />
-                    )}
+                    <span className="text-xl">{testimonial.image}</span>
                   </div>
                   <div>
                     <h4 className="font-bold text-white">{testimonial.name}</h4>
@@ -1100,20 +1129,34 @@ const HealthVedaMain = () => {
             </div>
             
             <div>
+              <h4 className="text-lg font-semibold mb-4">Quick Contact</h4>
+              <ul className="space-y-2">
+                <li>
+                  <button 
+                    onClick={handleCallClick}
+                    className="text-gray-400 hover:text-yellow-400 transition flex items-center"
+                  >
+                    📞 Call Now: +91 {phoneNumber}
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={handleWhatsAppClick}
+                    className="text-gray-400 hover:text-yellow-400 transition flex items-center"
+                  >
+                    💬 WhatsApp: +91 {phoneNumber}
+                  </button>
+                </li>
+                <li className="text-gray-400">✉️ support@testrobooster.com</li>
+              </ul>
+            </div>
+            
+            <div>
               <h4 className="text-lg font-semibold mb-4">About Us</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">Our Story</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">Mission</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">Quality Standards</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>📞 +91 98765 43210</li>
-                <li>✉️ support@testrobooster.com</li>
-                <li>📍 Made in India</li>
               </ul>
             </div>
             
