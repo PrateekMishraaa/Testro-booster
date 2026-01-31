@@ -2,12 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Veda from "../assets/testro.jpeg";
 import Dawai from "../assets/dawai.jpeg";
+import One from "../assets/11059.mp4";
+import Two from "../assets/11061.jpg";
+import Three from "../assets/11064.jpg";
+import Four from "../assets/11067.mp4";
+import Five from "../assets/11069.jpg";
+import Six from "../assets/11072.jpg";
+import Seven from "../assets/11074.mp4";
+import Eight from "../assets/11076.mp4";
+import Nine from "../assets/11078.jpg";
+import Ten from "../assets/11081.mp4";
 
 const HealthVedaMain = () => {
   const navigate = useNavigate();
   const [showAgeVerification, setShowAgeVerification] = useState(true);
   const [ageVerified, setAgeVerified] = useState(false);
   const [under18, setUnder18] = useState(false);
+  const [isPlaying, setIsPlaying] = useState({});
   
   // Timer state
   const [timer, setTimer] = useState({
@@ -86,7 +97,14 @@ const HealthVedaMain = () => {
     return time.toString().padStart(2, '0');
   };
 
-  // Data arrays remain the same...
+  const toggleVideoPlay = (videoId) => {
+    setIsPlaying(prev => ({
+      ...prev,
+      [videoId]: !prev[videoId]
+    }));
+  };
+
+  // Data arrays
   const trustBadges = [
     { text: 'Premium Formula', icon: '✅' },
     { text: 'Fast Absorbing', icon: '⚡' },
@@ -172,6 +190,20 @@ const HealthVedaMain = () => {
       q: 'Kya side effects hain?',
       a: 'Natural ingredients ke saath, side effects minimal hain. Phir bhi, doctor se consult karein agar koi medical condition ho.'
     }
+  ];
+
+  // Image and Video Gallery Data
+  const mediaGallery = [
+    { type: 'video', src: One, title: 'Before & After Transformation', desc: 'Real user results' },
+    { type: 'image', src: Two, title: 'Premium Packaging', desc: 'Hygienic & Secure' },
+    { type: 'image', src: Three, title: 'Natural Ingredients', desc: 'Pure & Potent' },
+    { type: 'video', src: Four, title: 'How It Works', desc: 'Mechanism explained' },
+    { type: 'image', src: Five, title: 'Capsule Close-up', desc: 'Easy to swallow' },
+    { type: 'image', src: Six, title: 'Quality Assurance', desc: 'Lab tested' },
+    { type: 'video', src: Seven, title: 'Customer Reviews', desc: 'Real testimonials' },
+    { type: 'video', src: Eight, title: 'Manufacturing Process', desc: 'GMP certified' },
+    { type: 'image', src: Nine, title: 'Results Timeline', desc: 'Expected progress' },
+    { type: 'video', src: Ten, title: 'Final Results', desc: 'Complete transformation' }
   ];
 
   // Don't render main content if age not verified or under 18
@@ -344,13 +376,111 @@ const HealthVedaMain = () => {
                     }}
                   />
                 </div>
-                
-                {/* Power Particles */}
-                <div className="absolute top-0 left-1/4 w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
-                <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
-                <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-yellow-300 rounded-full animate-bounce"></div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 🎬 MEDIA GALLERY SECTION - Using One to Ten assets */}
+      <section className="py-16 bg-gradient-to-b from-black to-gray-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+            See Testro Booster in Action
+          </h2>
+          <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+            Visual proof of quality, results, and transformation from real users
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {mediaGallery.slice(0, 8).map((media, index) => (
+              <div 
+                key={index}
+                className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-300 hover:transform hover:-translate-y-1"
+              >
+                <div className="relative aspect-video">
+                  {media.type === 'video' ? (
+                    <>
+                      <video
+                        className="w-full h-full object-cover"
+                        src={media.src}
+                        muted
+                        loop
+                        autoPlay={isPlaying[`video-${index}`]}
+                        poster={Two} // Using image 2 as poster
+                        onClick={() => toggleVideoPlay(`video-${index}`)}
+                      />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                        <button
+                          onClick={() => toggleVideoPlay(`video-${index}`)}
+                          className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-all"
+                        >
+                          <span className="text-white text-2xl">
+                            {isPlaying[`video-${index}`] ? '⏸️' : '▶️'}
+                          </span>
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <img
+                      src={media.src}
+                      alt={media.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = `https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=80&ixid=${index}`;
+                      }}
+                    />
+                  )}
+                </div>
+                <div className="p-4">
+                  <h3 className="text-white font-bold mb-1">{media.title}</h3>
+                  <p className="text-gray-400 text-sm">{media.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Last two larger items */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+            {mediaGallery.slice(8, 10).map((media, index) => (
+              <div 
+                key={index + 8}
+                className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-300"
+              >
+                <div className="relative h-64 md:h-80">
+                  {media.type === 'video' ? (
+                    <>
+                      <video
+                        className="w-full h-full object-cover"
+                        src={media.src}
+                        muted
+                        loop
+                        autoPlay={isPlaying[`video-${index + 8}`]}
+                        poster={Nine}
+                        onClick={() => toggleVideoPlay(`video-${index + 8}`)}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                        <h3 className="text-white text-2xl font-bold mb-2">{media.title}</h3>
+                        <p className="text-gray-300">{media.desc}</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        src={media.src}
+                        alt={media.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                        <h3 className="text-white text-2xl font-bold mb-2">{media.title}</h3>
+                        <p className="text-gray-300">{media.desc}</p>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -419,7 +549,7 @@ const HealthVedaMain = () => {
                 </div>
               </div>
               
-              {/* Dawai Image Section - Updated with Dawai image */}
+              {/* Dawai Image Section */}
               <div className="relative">
                 <div className="bg-gradient-to-br from-gray-800 to-black p-8 rounded-2xl border border-gray-700">
                   <div className="flex flex-col items-center justify-center space-y-6 mb-6">
@@ -431,7 +561,7 @@ const HealthVedaMain = () => {
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop';
+                            e.target.src = Five; // Use image 5 as fallback
                           }}
                         />
                       </div>
@@ -482,7 +612,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🌿 INGREDIENT SECTION with Dawai Image */}
+      {/* 🌿 INGREDIENT SECTION with Multiple Images */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -491,24 +621,24 @@ const HealthVedaMain = () => {
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Left - Ingredients Grid with Dawai Image */}
+              {/* Left - Ingredients Grid with Images */}
               <div>
                 <div className="mb-8">
                   <div className="bg-gradient-to-br from-gray-800 to-black p-6 rounded-xl border border-gray-700">
                     <div className="flex flex-col items-center">
                       <div className="w-48 h-48 mb-4 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-lg">
                         <img 
-                          src={Dawai}
-                          alt="Testro Booster Capsules Close-up"
+                          src={Two}
+                          alt="Testro Booster Packaging"
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop';
+                            e.target.src = Five;
                           }}
                         />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2">60 Capsules</h3>
-                      <p className="text-gray-400">1-2 Month Supply</p>
+                      <h3 className="text-xl font-bold text-white mb-2">Premium Packaging</h3>
+                      <p className="text-gray-400">Hygienic & Protective</p>
                     </div>
                   </div>
                 </div>
@@ -517,7 +647,7 @@ const HealthVedaMain = () => {
                   {ingredients.map((ingredient, index) => (
                     <div 
                       key={index}
-                      className="bg-gray-800 p-4 rounded-xl text-center border border-gray-700"
+                      className="bg-gray-800 p-4 rounded-xl text-center border border-gray-700 hover:border-yellow-400 transition-all"
                     >
                       <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-r from-red-900 to-gray-800 flex items-center justify-center">
                         <span className="text-2xl">🌿</span>
@@ -533,7 +663,7 @@ const HealthVedaMain = () => {
                 </div>
               </div>
               
-              {/* Right - Explanation */}
+              {/* Right - Explanation with Image Grid */}
               <div>
                 <div className="bg-gray-800 p-8 rounded-xl border border-gray-700 h-full">
                   <h3 className="text-2xl font-bold text-white mb-6">
@@ -543,6 +673,31 @@ const HealthVedaMain = () => {
                   <p className="text-gray-300 mb-6 leading-relaxed">
                     Powerful natural extracts jo body ke natural process ko support karte hain — bina harmful chemicals ke. Every ingredient is carefully selected for maximum effectiveness.
                   </p>
+                  
+                  {/* Small Image Grid */}
+                  <div className="grid grid-cols-3 gap-4 mb-6">
+                    <div className="rounded-lg overflow-hidden">
+                      <img 
+                        src={Three}
+                        alt="Natural Ingredients"
+                        className="w-full h-24 object-cover"
+                      />
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                      <img 
+                        src={Six}
+                        alt="Quality Lab"
+                        className="w-full h-24 object-cover"
+                      />
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                      <img 
+                        src={Nine}
+                        alt="Results Timeline"
+                        className="w-full h-24 object-cover"
+                      />
+                    </div>
+                  </div>
                   
                   <div className="space-y-4 mb-8">
                     <div className="flex items-center space-x-3">
@@ -566,23 +721,6 @@ const HealthVedaMain = () => {
                       <span className="text-gray-300">Easy to Consume Capsules</span>
                     </div>
                   </div>
-
-                  {/* Additional Dawai Image */}
-                  <div className="mt-8 p-4 bg-gradient-to-r from-red-900 to-gray-800 rounded-lg">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 rounded-lg overflow-hidden">
-                        <img 
-                          src={Dawai}
-                          alt="Capsule Closeup"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div>
-                        <h4 className="text-white font-bold">Easy to Swallow</h4>
-                        <p className="text-gray-300 text-sm">Vegetarian capsules for easy consumption</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -590,7 +728,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🔄 HOW IT WORKS with Dawai Image */}
+      {/* 🔄 HOW IT WORKS with Video */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -617,37 +755,41 @@ const HealthVedaMain = () => {
                     {step.desc}
                   </p>
                   
-                  {/* Small Dawai Image in Step 2 */}
-                  {step.step === '2' && (
+                  {/* Video in Step 1 */}
+                  {step.step === '1' && (
                     <div className="mt-4">
-                      <div className="w-32 h-32 mx-auto rounded-lg overflow-hidden border-2 border-yellow-500">
-                        <img 
-                          src={Dawai}
-                          alt="Absorption Process"
+                      <div className="w-full h-48 rounded-lg overflow-hidden border-2 border-yellow-500">
+                        <video
                           className="w-full h-full object-cover"
+                          src={Four}
+                          muted
+                          loop
+                          autoPlay
                         />
                       </div>
-                      <p className="text-gray-400 text-sm mt-2">Fast absorption in the body</p>
+                      <p className="text-gray-400 text-sm mt-2">Fast absorption demonstration</p>
                     </div>
                   )}
                 </div>
               ))}
             </div>
             
-            {/* Dawai Image Banner Below Steps */}
+            {/* Video Banner Below Steps */}
             <div className="mt-12 bg-gradient-to-r from-gray-800 to-black p-6 rounded-xl border border-gray-700">
               <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="mb-6 md:mb-0 md:mr-8">
-                  <h3 className="text-2xl font-bold text-white mb-3">Real Results with Every Capsule</h3>
+                  <h3 className="text-2xl font-bold text-white mb-3">Watch How It Works</h3>
                   <p className="text-gray-300">
-                    Each Testro Booster capsule contains concentrated natural extracts for maximum effectiveness.
+                    See the complete mechanism of Testro Booster in action. Each capsule works systematically to deliver results.
                   </p>
                 </div>
-                <div className="w-48 h-48 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
-                  <img 
-                    src={Dawai}
-                    alt="Testro Booster Capsules"
+                <div className="w-64 h-48 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
+                  <video
                     className="w-full h-full object-cover"
+                    src={Seven}
+                    muted
+                    loop
+                    autoPlay
                   />
                 </div>
               </div>
@@ -656,7 +798,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 💊 HOW TO USE with Dawai Image */}
+      {/* 💊 HOW TO USE with Images */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -693,17 +835,17 @@ const HealthVedaMain = () => {
                 </div>
               </div>
               
-              {/* Dawai Image for Usage */}
+              {/* Image for Usage */}
               <div className="flex items-center justify-center">
                 <div className="bg-gradient-to-br from-gray-800 to-black p-6 rounded-xl border border-gray-700 w-full">
                   <div className="text-center mb-4">
-                    <h3 className="text-xl font-bold text-white mb-2">Daily Routine</h3>
-                    <p className="text-gray-400">Easy to incorporate in your daily life</p>
+                    <h3 className="text-xl font-bold text-white mb-2">Daily Routine Made Easy</h3>
+                    <p className="text-gray-400">Simple to incorporate in your daily life</p>
                   </div>
-                  <div className="w-64 h-64 mx-auto rounded-lg overflow-hidden border-2 border-yellow-500">
+                  <div className="w-full h-64 rounded-lg overflow-hidden border-2 border-yellow-500">
                     <img 
-                      src={Dawai}
-                      alt="Daily Usage"
+                      src={Five}
+                      alt="Daily Usage Demonstration"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -726,9 +868,9 @@ const HealthVedaMain = () => {
               {userTypes.map((type, index) => (
                 <div 
                   key={index}
-                  className="bg-gray-800 p-6 rounded-xl border border-gray-700"
+                  className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all"
                 >
-                  <div className="text-2xl mb-3">✔</div>
+                  <div className="text-2xl mb-3 text-green-400">✔</div>
                   <p className="text-gray-300">{type}</p>
                 </div>
               ))}
@@ -743,7 +885,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* ⭐ TESTIMONIALS - Updated with Dawai Image */}
+      {/* ⭐ TESTIMONIALS with Transformation Videos */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -754,7 +896,7 @@ const HealthVedaMain = () => {
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index}
-                className="bg-gray-800 p-6 rounded-xl border border-gray-700"
+                className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-yellow-500 transition-all"
               >
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -787,21 +929,29 @@ const HealthVedaMain = () => {
             ))}
           </div>
           
-          {/* Dawai Image in Testimonials Section */}
+          {/* Transformation Video Section */}
           <div className="mt-12 bg-gradient-to-r from-gray-800 to-black p-8 rounded-xl border border-gray-700">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-8">
-                <h3 className="text-2xl font-bold text-white mb-3">Real Product, Real Results</h3>
-                <p className="text-gray-300">
-                  Thousands of satisfied customers trust Testro Booster for their vitality needs. 
-                  Join them today and experience the difference.
+                <h3 className="text-2xl font-bold text-white mb-3">Real Transformations</h3>
+                <p className="text-gray-300 mb-4">
+                  See actual results from our satisfied customers. These videos show the journey of transformation.
                 </p>
+                <button
+                  onClick={handleOrderClick}
+                  className="px-6 py-3 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-bold rounded-lg hover:from-red-700 hover:to-yellow-600 transition-all"
+                >
+                  Start Your Transformation
+                </button>
               </div>
-              <div className="w-48 h-48 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
-                <img 
-                  src={Dawai}
-                  alt="Testro Booster Product"
+              <div className="w-full md:w-96 h-64 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
+                <video
                   className="w-full h-full object-cover"
+                  src={One}
+                  muted
+                  loop
+                  autoPlay
+                  poster={Two}
                 />
               </div>
             </div>
