@@ -23,22 +23,22 @@ const OrderForm = () => {
     },
     products: [
       {
-        name: 'Tetro Booster Capsule',
+        name: 'Testro Booster Capsule',
         capsuleType: 'Premium',
         quantity: 1,
-        price: 49.99
+        price: 1299
       }
     ],
-    subtotal: 49.99,
-    tax: 4.00,
-    shippingFee: 5.00,
-    totalAmount: 58.99,
+    subtotal: 1299,
+    tax: 104,
+    shippingFee: 99,
+    totalAmount: 1999,
     paymentMethod: 'cod',
     notes: ''
   });
 
   // API base URL
-  const API_BASE_URL = 'https://testroboosterbackend-6.onrender.com/api';
+  const API_BASE_URL = 'https://testobackend-2.onrender.com/api';
 
   // Handle input changes
   const handleInputChange = (e) => {
@@ -64,37 +64,44 @@ const OrderForm = () => {
   // Handle product quantity change
   const handleQuantityChange = (e) => {
     const quantity = parseInt(e.target.value) || 1;
-    const price = 49.99;
+    let price = 1299;
+    
+    // Adjust price based on quantity (bulk discount)
+    if (quantity >= 3) price = 1199; // ₹100 discount for 3+ bottles
+    if (quantity >= 6) price = 1099; // ₹200 discount for 6+ bottles
+    
     const subtotal = quantity * price;
-    const tax = subtotal * 0.08;
-    const shippingFee = 5.00;
+    const tax = Math.round(subtotal * 0.08);
+    const shippingFee = quantity >= 3 ? 0 : 99; // Free shipping for 3+ bottles
     const totalAmount = subtotal + tax + shippingFee;
 
     setFormData(prev => ({
       ...prev,
       products: [{
         ...prev.products[0],
-        quantity: quantity
+        quantity: quantity,
+        price: price
       }],
-      subtotal: parseFloat(subtotal.toFixed(2)),
-      tax: parseFloat(tax.toFixed(2)),
-      totalAmount: parseFloat(totalAmount.toFixed(2))
+      subtotal: subtotal,
+      tax: tax,
+      shippingFee: shippingFee,
+      totalAmount: totalAmount
     }));
   };
 
   // Handle capsule type change
   const handleCapsuleTypeChange = (e) => {
     const capsuleType = e.target.value;
-    let price = 49.99;
+    let price = 1299;
     
     // Different prices for different capsule types
-    if (capsuleType === 'Ultra Premium') price = 69.99;
-    if (capsuleType === 'Standard') price = 39.99;
+    if (capsuleType === 'Ultra Premium') price = 1899;
+    if (capsuleType === 'Standard') price = 999;
     
     const quantity = formData.products[0].quantity;
     const subtotal = quantity * price;
-    const tax = subtotal * 0.08;
-    const shippingFee = 5.00;
+    const tax = Math.round(subtotal * 0.08);
+    const shippingFee = quantity >= 3 ? 0 : 99;
     const totalAmount = subtotal + tax + shippingFee;
 
     setFormData(prev => ({
@@ -104,10 +111,40 @@ const OrderForm = () => {
         capsuleType: capsuleType,
         price: price
       }],
-      subtotal: parseFloat(subtotal.toFixed(2)),
-      tax: parseFloat(tax.toFixed(2)),
-      totalAmount: parseFloat(totalAmount.toFixed(2))
+      subtotal: subtotal,
+      tax: tax,
+      shippingFee: shippingFee,
+      totalAmount: totalAmount
     }));
+  };
+
+  // Calculate savings
+  const calculateSavings = () => {
+    const basePrice = 1299;
+    const currentPrice = formData.products[0].price;
+    const quantity = formData.products[0].quantity;
+    
+    if (formData.products[0].capsuleType !== 'Premium') {
+      return 0; // No savings for other types
+    }
+    
+    if (quantity >= 6) {
+      return (basePrice - 1099) * quantity;
+    } else if (quantity >= 3) {
+      return (basePrice - 1199) * quantity;
+    } else {
+      return 0;
+    }
+  };
+
+  // Format Indian Rupee
+  const formatINR = (amount) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(amount);
   };
 
   // Handle form submission
@@ -191,10 +228,10 @@ const OrderForm = () => {
             Back to Home
           </button>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-            Place Your Order
+            Place Your Testro Booster Order
           </h1>
           <p className="text-gray-600">
-            Fill in your details to order Tetro Booster Capsules
+            Fill in your details to order Testro Booster Capsules
           </p>
         </div>
 
@@ -348,7 +385,7 @@ const OrderForm = () => {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      ZIP Code *
+                      PIN Code *
                     </label>
                     <input
                       type="text"
@@ -391,11 +428,11 @@ const OrderForm = () => {
                 <div className="bg-gray-50 rounded-lg p-6 mb-6">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                     <div>
-                      <h3 className="font-medium text-gray-800">Tetro Booster Capsule</h3>
-                      <p className="text-sm text-gray-600 mt-1">Advanced energy and stamina supplement</p>
+                      <h3 className="font-medium text-gray-800">Testro Booster Capsule</h3>
+                      <p className="text-sm text-gray-600 mt-1">Advanced male vitality supplement</p>
                     </div>
                     
-                    <div className="flex items-center space-x-6 mt-4 md:mt-0">
+                    <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                           Capsule Type
@@ -405,9 +442,9 @@ const OrderForm = () => {
                           onChange={handleCapsuleTypeChange}
                           className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                         >
-                          <option value="Premium">Premium</option>
-                          <option value="Ultra Premium">Ultra Premium</option>
-                          <option value="Standard">Standard</option>
+                          <option value="Premium">Premium (₹1,299)</option>
+                          <option value="Ultra Premium">Ultra Premium (₹1,899)</option>
+                          <option value="Standard">Standard (₹999)</option>
                         </select>
                       </div>
                       
@@ -421,19 +458,43 @@ const OrderForm = () => {
                           className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                         >
                           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-                            <option key={num} value={num}>{num}</option>
+                            <option key={num} value={num}>{num} {num === 1 ? 'Bottle' : 'Bottles'}</option>
                           ))}
                         </select>
                       </div>
                       
                       <div className="text-right">
-                        <p className="text-sm text-gray-600">Price</p>
+                        <p className="text-sm text-gray-600">Price per bottle</p>
                         <p className="text-lg font-semibold text-blue-600">
-                          ${formData.products[0].price.toFixed(2)}
+                          {formatINR(formData.products[0].price)}
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          {formData.products[0].capsuleType === 'Premium' && formData.products[0].quantity === 1 ? (
+                            <span>Regular price</span>
+                          ) : formData.products[0].capsuleType === 'Premium' && formData.products[0].quantity >= 3 ? (
+                            <span className="text-green-600">Discounted price</span>
+                          ) : null}
                         </p>
                       </div>
                     </div>
                   </div>
+
+                  {/* Discount Badge */}
+                  {formData.products[0].capsuleType === 'Premium' && formData.products[0].quantity >= 3 && (
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+                      <div className="flex items-center">
+                        <span className="text-yellow-600 mr-2">🎉</span>
+                        <span className="text-yellow-800 font-medium">
+                          {formData.products[0].quantity >= 6 ? 
+                            `Great Deal! You save ${formatINR((1299 - 1099) * formData.products[0].quantity)}` : 
+                            `Great Deal! You save ${formatINR((1299 - 1199) * formData.products[0].quantity)}`}
+                        </span>
+                        <span className="ml-2 text-sm text-yellow-600">
+                          {formData.products[0].quantity >= 3 && '(Free shipping included)'}
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Order Summary */}
@@ -443,26 +504,43 @@ const OrderForm = () => {
                   <div className="space-y-3">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Subtotal</span>
-                      <span className="font-medium">${formData.subtotal.toFixed(2)}</span>
+                      <span className="font-medium">{formatINR(formData.subtotal)}</span>
                     </div>
                     
                     <div className="flex justify-between">
                       <span className="text-gray-600">Tax (8%)</span>
-                      <span className="font-medium">${formData.tax.toFixed(2)}</span>
+                      <span className="font-medium">{formatINR(formData.tax)}</span>
                     </div>
                     
                     <div className="flex justify-between">
                       <span className="text-gray-600">Shipping Fee</span>
-                      <span className="font-medium">${formData.shippingFee.toFixed(2)}</span>
+                      <span className="font-medium">
+                        {formData.shippingFee === 0 ? (
+                          <span className="text-green-600">FREE</span>
+                        ) : (
+                          formatINR(formData.shippingFee)
+                        )}
+                      </span>
                     </div>
                     
                     <div className="flex justify-between pt-3 border-t border-gray-300">
                       <span className="text-lg font-semibold text-gray-800">Total Amount</span>
                       <span className="text-2xl font-bold text-blue-600">
-                        ${formData.totalAmount.toFixed(2)}
+                        {formatINR(formData.totalAmount)}
                       </span>
                     </div>
                   </div>
+
+                  {/* Savings Info */}
+                  {formData.products[0].capsuleType === 'Premium' && formData.products[0].quantity >= 3 && (
+                    <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="flex items-center justify-between">
+                        <span className="text-green-800">
+                          ✅ You saved {formatINR(calculateSavings())} with this order
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -472,33 +550,105 @@ const OrderForm = () => {
                   Payment Method
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {['cod', 'credit_card', 'paypal', 'bank_transfer'].map((method) => (
-                    <div key={method} className="relative">
-                      <input
-                        type="radio"
-                        id={method}
-                        name="paymentMethod"
-                        value={method}
-                        checked={formData.paymentMethod === method}
-                        onChange={handleInputChange}
-                        className="sr-only"
-                      />
-                      <label
-                        htmlFor={method}
-                        className={`flex flex-col items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                          formData.paymentMethod === method
-                            ? 'border-blue-500 bg-blue-50'
-                            : 'border-gray-300 hover:border-blue-300'
-                        }`}
-                      >
-                        <div className="text-lg font-medium capitalize">
-                          {method === 'cod' ? 'Cash on Delivery' : 
-                           method === 'credit_card' ? 'Credit Card' : 
-                           method === 'paypal' ? 'PayPal' : 'Bank Transfer'}
-                        </div>
-                      </label>
-                    </div>
-                  ))}
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      id="cod"
+                      name="paymentMethod"
+                      value="cod"
+                      checked={formData.paymentMethod === 'cod'}
+                      onChange={handleInputChange}
+                      className="sr-only"
+                    />
+                    <label
+                      htmlFor="cod"
+                      className={`flex flex-col items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                        formData.paymentMethod === 'cod'
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-300 hover:border-blue-300'
+                      }`}
+                    >
+                      <div className="text-lg">💰</div>
+                      <div className="text-sm font-medium mt-2 text-center">
+                        Cash on Delivery
+                      </div>
+                    </label>
+                  </div>
+
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      id="upi"
+                      name="paymentMethod"
+                      value="upi"
+                      checked={formData.paymentMethod === 'upi'}
+                      onChange={handleInputChange}
+                      className="sr-only"
+                    />
+                    <label
+                      htmlFor="upi"
+                      className={`flex flex-col items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                        formData.paymentMethod === 'upi'
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-300 hover:border-blue-300'
+                      }`}
+                    >
+                      <div className="text-lg">📱</div>
+                      <div className="text-sm font-medium mt-2 text-center">
+                        UPI Payment
+                      </div>
+                    </label>
+                  </div>
+
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      id="credit_card"
+                      name="paymentMethod"
+                      value="credit_card"
+                      checked={formData.paymentMethod === 'credit_card'}
+                      onChange={handleInputChange}
+                      className="sr-only"
+                    />
+                    <label
+                      htmlFor="credit_card"
+                      className={`flex flex-col items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                        formData.paymentMethod === 'credit_card'
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-300 hover:border-blue-300'
+                      }`}
+                    >
+                      <div className="text-lg">💳</div>
+                      <div className="text-sm font-medium mt-2 text-center">
+                        Credit/Debit Card
+                      </div>
+                    </label>
+                  </div>
+
+                  <div className="relative">
+                    <input
+                      type="radio"
+                      id="netbanking"
+                      name="paymentMethod"
+                      value="netbanking"
+                      checked={formData.paymentMethod === 'netbanking'}
+                      onChange={handleInputChange}
+                      className="sr-only"
+                    />
+                    <label
+                      htmlFor="netbanking"
+                      className={`flex flex-col items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                        formData.paymentMethod === 'netbanking'
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-300 hover:border-blue-300'
+                      }`}
+                    >
+                      <div className="text-lg">🏦</div>
+                      <div className="text-sm font-medium mt-2 text-center">
+                        Net Banking
+                      </div>
+                    </label>
+                  </div>
                 </div>
               </div>
 
@@ -532,7 +682,7 @@ const OrderForm = () => {
                   className={`px-8 py-4 rounded-lg font-semibold text-white transition-all ${
                     loading 
                       ? 'bg-gray-400 cursor-not-allowed' 
-                      : 'bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl'
+                      : 'bg-gradient-to-r from-red-700 to-yellow-600 hover:from-red-800 hover:to-yellow-700 shadow-lg hover:shadow-xl'
                   }`}
                 >
                   {loading ? (
@@ -544,7 +694,7 @@ const OrderForm = () => {
                       Processing Order...
                     </span>
                   ) : (
-                    `Place Order - $${formData.totalAmount.toFixed(2)}`
+                    `Place Order - ${formatINR(formData.totalAmount)}`
                   )}
                 </button>
               </div>
@@ -554,8 +704,11 @@ const OrderForm = () => {
 
         {/* Support Info */}
         <div className="mt-8 text-center text-gray-600 text-sm">
-          <p>Need help? Contact us at support@tetrobooster.com or call +91 98765 43210</p>
+          <p>Need help? Contact us at support@testrobooster.com or call +91 98765 43210</p>
           <p className="mt-1">We'll send order confirmation and tracking details to your email</p>
+          <p className="mt-1 text-green-600 font-medium">
+            ✅ Free Shipping on orders of 3 or more bottles!
+          </p>
         </div>
       </div>
     </div>

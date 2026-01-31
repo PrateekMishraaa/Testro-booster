@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Veda from "../assets/testro.jpeg";
+import Dawai from "../assets/dawai.jpeg";
 
 const HealthVedaMain = () => {
   const navigate = useNavigate();
   const [showAgeVerification, setShowAgeVerification] = useState(true);
   const [ageVerified, setAgeVerified] = useState(false);
   const [under18, setUnder18] = useState(false);
+  
+  // Timer state
+  const [timer, setTimer] = useState({
+    hours: 4,
+    minutes: 23,
+    seconds: 48
+  });
+  const [timerActive, setTimerActive] = useState(true);
 
   useEffect(() => {
     // Check if age was already verified in session storage
@@ -16,6 +25,42 @@ const HealthVedaMain = () => {
       setShowAgeVerification(false);
     }
   }, []);
+
+  // Timer countdown effect
+  useEffect(() => {
+    if (!timerActive) return;
+
+    const interval = setInterval(() => {
+      setTimer(prevTimer => {
+        let { hours, minutes, seconds } = prevTimer;
+        
+        seconds--;
+        
+        if (seconds < 0) {
+          seconds = 59;
+          minutes--;
+          
+          if (minutes < 0) {
+            minutes = 59;
+            hours--;
+            
+            if (hours < 0) {
+              // Timer reached 0, reset to 4 hours
+              hours = 4;
+              minutes = 23;
+              seconds = 48;
+              setTimerActive(false);
+              setTimeout(() => setTimerActive(true), 1000);
+            }
+          }
+        }
+        
+        return { hours, minutes, seconds };
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [timerActive]);
 
   const handleOrderClick = () => {
     navigate('/order-form');
@@ -35,6 +80,10 @@ const HealthVedaMain = () => {
   const handleBackToVerification = () => {
     setUnder18(false);
     setShowAgeVerification(true);
+  };
+
+  const formatTime = (time) => {
+    return time.toString().padStart(2, '0');
   };
 
   // Data arrays remain the same...
@@ -87,19 +136,22 @@ const HealthVedaMain = () => {
       rating: 5,
       text: 'Energy aur stamina kaafi improve hui. Regular workouts mein fark mehsoos hota hai.',
       name: 'Rajesh Kumar',
-      location: 'Delhi'
+      location: 'Delhi',
+      image: '👤'
     },
     {
       rating: 5,
       text: 'Confidence pehle se strong feel hota hai. Office meetings mein better performance.',
       name: 'Vikram Singh',
-      location: 'Mumbai'
+      location: 'Mumbai',
+      image: '👤'
     },
     {
       rating: 5,
       text: 'Gym performance noticeable better hui. Recovery time kam hua.',
       name: 'Arjun Patel',
-      location: 'Bangalore'
+      location: 'Bangalore',
+      image: '👤'
     }
   ];
 
@@ -207,7 +259,7 @@ const HealthVedaMain = () => {
     <div className="min-h-screen bg-black">
       {/* Age Verified Indicator (small banner) */}
       <div className="bg-gradient-to-r from-green-800 to-green-600 text-white text-center py-2 text-sm">
-        ✅ Age Verified | Welcome to TestoBooster
+        ✅ Age Verified | Welcome to Testro Booster
       </div>
 
       {/* 🔥 HERO SECTION */}
@@ -226,7 +278,7 @@ const HealthVedaMain = () => {
               
               <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 bg-clip-text text-transparent">
-                  TESTOBOOSTER
+                  TESTRO BOOSTER
                 </span>
               </h1>
               
@@ -284,7 +336,7 @@ const HealthVedaMain = () => {
                 <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-3xl border border-gray-700 shadow-2xl">
                   <img 
                     src={Veda}
-                    alt="TestoBooster Premium Bottle"
+                    alt="Testro Booster Premium Bottle"
                     className="w-full h-auto transform hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       e.target.onerror = null;
@@ -327,18 +379,18 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🔧 SOLUTION SECTION */}
+      {/* 🔧 SOLUTION SECTION - Dawai Image Here */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-              The Solution: <span className="text-yellow-400">TESTOBOOSTER</span>
+              The Solution: <span className="text-yellow-400">TESTRO BOOSTER</span>
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Testobooster specially banaya gaya hai un mardon ke liye jo apni natural masculine energy ko revive karna chahte hain. Advanced formula jo scientifically designed hai optimum results ke liye.
+                  Testro Booster specially banaya gaya hai un mardon ke liye jo apni natural masculine energy ko revive karna chahte hain. Advanced formula jo scientifically designed hai optimum results ke liye.
                 </p>
                 
                 {/* Energy Meter */}
@@ -367,15 +419,26 @@ const HealthVedaMain = () => {
                 </div>
               </div>
               
+              {/* Dawai Image Section - Updated with Dawai image */}
               <div className="relative">
                 <div className="bg-gradient-to-br from-gray-800 to-black p-8 rounded-2xl border border-gray-700">
-                  <div className="flex items-center justify-center space-x-4 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full flex items-center justify-center">
-                      <span className="text-2xl">💊</span>
+                  <div className="flex flex-col items-center justify-center space-y-6 mb-6">
+                    <div className="w-32 h-32 rounded-full bg-gradient-to-r from-red-700 to-yellow-600 p-1">
+                      <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
+                        <img 
+                          src={Dawai}
+                          alt="Testro Booster Capsules"
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop';
+                          }}
+                        />
+                      </div>
                     </div>
-                    <div className="text-white">
-                      <h3 className="text-xl font-bold">Premium Capsules</h3>
-                      <p className="text-gray-400">Fast Absorption</p>
+                    <div className="text-center text-white">
+                      <h3 className="text-2xl font-bold">Premium Capsules</h3>
+                      <p className="text-gray-400">Fast Absorption Formula</p>
                     </div>
                   </div>
                   
@@ -400,7 +463,7 @@ const HealthVedaMain = () => {
       <section className="py-16 bg-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-            What Testobooster Does for You
+            What Testro Booster Does for You
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -419,7 +482,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🌿 INGREDIENT SECTION */}
+      {/* 🌿 INGREDIENT SECTION with Dawai Image */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -428,8 +491,28 @@ const HealthVedaMain = () => {
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Left - Ingredients Grid */}
+              {/* Left - Ingredients Grid with Dawai Image */}
               <div>
+                <div className="mb-8">
+                  <div className="bg-gradient-to-br from-gray-800 to-black p-6 rounded-xl border border-gray-700">
+                    <div className="flex flex-col items-center">
+                      <div className="w-48 h-48 mb-4 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-lg">
+                        <img 
+                          src={Dawai}
+                          alt="Testro Booster Capsules Close-up"
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop';
+                          }}
+                        />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2">60 Capsules</h3>
+                      <p className="text-gray-400">1-2 Month Supply</p>
+                    </div>
+                  </div>
+                </div>
+                
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                   {ingredients.map((ingredient, index) => (
                     <div 
@@ -461,7 +544,7 @@ const HealthVedaMain = () => {
                     Powerful natural extracts jo body ke natural process ko support karte hain — bina harmful chemicals ke. Every ingredient is carefully selected for maximum effectiveness.
                   </p>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-4 mb-8">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full flex items-center justify-center">
                         <span className="text-white">✔</span>
@@ -483,6 +566,23 @@ const HealthVedaMain = () => {
                       <span className="text-gray-300">Easy to Consume Capsules</span>
                     </div>
                   </div>
+
+                  {/* Additional Dawai Image */}
+                  <div className="mt-8 p-4 bg-gradient-to-r from-red-900 to-gray-800 rounded-lg">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-16 h-16 rounded-lg overflow-hidden">
+                        <img 
+                          src={Dawai}
+                          alt="Capsule Closeup"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold">Easy to Swallow</h4>
+                        <p className="text-gray-300 text-sm">Vegetarian capsules for easy consumption</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -490,22 +590,19 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🔄 HOW IT WORKS */}
+      {/* 🔄 HOW IT WORKS with Dawai Image */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-            How Testobooster Works
+            How Testro Booster Works
           </h2>
           
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-              {/* Connecting line for desktop */}
-              <div className="hidden md:block absolute top-1/4 left-1/6 right-1/6 h-1 bg-gradient-to-r from-red-600 via-yellow-500 to-yellow-400 z-0"></div>
-              
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {workingSteps.map((step, index) => (
                 <div 
                   key={index}
-                  className="relative z-10 bg-gray-900 p-8 rounded-xl border border-gray-800 text-center"
+                  className="relative bg-gray-900 p-8 rounded-xl border border-gray-800 text-center"
                 >
                   <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full flex items-center justify-center text-3xl">
                     {step.icon}
@@ -516,48 +613,100 @@ const HealthVedaMain = () => {
                   <h3 className="text-xl font-bold text-white mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-400 mb-6">
                     {step.desc}
                   </p>
+                  
+                  {/* Small Dawai Image in Step 2 */}
+                  {step.step === '2' && (
+                    <div className="mt-4">
+                      <div className="w-32 h-32 mx-auto rounded-lg overflow-hidden border-2 border-yellow-500">
+                        <img 
+                          src={Dawai}
+                          alt="Absorption Process"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <p className="text-gray-400 text-sm mt-2">Fast absorption in the body</p>
+                    </div>
+                  )}
                 </div>
               ))}
+            </div>
+            
+            {/* Dawai Image Banner Below Steps */}
+            <div className="mt-12 bg-gradient-to-r from-gray-800 to-black p-6 rounded-xl border border-gray-700">
+              <div className="flex flex-col md:flex-row items-center justify-between">
+                <div className="mb-6 md:mb-0 md:mr-8">
+                  <h3 className="text-2xl font-bold text-white mb-3">Real Results with Every Capsule</h3>
+                  <p className="text-gray-300">
+                    Each Testro Booster capsule contains concentrated natural extracts for maximum effectiveness.
+                  </p>
+                </div>
+                <div className="w-48 h-48 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
+                  <img 
+                    src={Dawai}
+                    alt="Testro Booster Capsules"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 💊 HOW TO USE */}
+      {/* 💊 HOW TO USE with Dawai Image */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-              How to Use Testobooster
+              How to Use Testro Booster
             </h2>
             
-            <div className="bg-gray-800 p-8 rounded-xl border border-gray-700">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="text-4xl mb-4">💊</div>
-                  <h3 className="text-lg font-bold text-white mb-2">Dosage</h3>
-                  <p className="text-gray-300">1–2 capsules daily</p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center">
+                    <div className="text-4xl mb-4">💊</div>
+                    <h3 className="text-lg font-bold text-white mb-2">Dosage</h3>
+                    <p className="text-gray-300">1–2 capsules daily</p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="text-4xl mb-4">🥛</div>
+                    <h3 className="text-lg font-bold text-white mb-2">With</h3>
+                    <p className="text-gray-300">Paani ya doodh ke saath</p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="text-4xl mb-4">⏳</div>
+                    <h3 className="text-lg font-bold text-white mb-2">Duration</h3>
+                    <p className="text-gray-300">Regular use for best results</p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="text-4xl mb-4">⚠️</div>
+                    <h3 className="text-lg font-bold text-white mb-2">Note</h3>
+                    <p className="text-gray-300">Healthy lifestyle recommended</p>
+                  </div>
                 </div>
-                
-                <div className="text-center">
-                  <div className="text-4xl mb-4">🥛</div>
-                  <h3 className="text-lg font-bold text-white mb-2">With</h3>
-                  <p className="text-gray-300">Paani ya doodh ke saath</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="text-4xl mb-4">⏳</div>
-                  <h3 className="text-lg font-bold text-white mb-2">Duration</h3>
-                  <p className="text-gray-300">Regular use for best results</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="text-4xl mb-4">⚠️</div>
-                  <h3 className="text-lg font-bold text-white mb-2">Note</h3>
-                  <p className="text-gray-300">Healthy lifestyle recommended</p>
+              </div>
+              
+              {/* Dawai Image for Usage */}
+              <div className="flex items-center justify-center">
+                <div className="bg-gradient-to-br from-gray-800 to-black p-6 rounded-xl border border-gray-700 w-full">
+                  <div className="text-center mb-4">
+                    <h3 className="text-xl font-bold text-white mb-2">Daily Routine</h3>
+                    <p className="text-gray-400">Easy to incorporate in your daily life</p>
+                  </div>
+                  <div className="w-64 h-64 mx-auto rounded-lg overflow-hidden border-2 border-yellow-500">
+                    <img 
+                      src={Dawai}
+                      alt="Daily Usage"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -570,7 +719,7 @@ const HealthVedaMain = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-12">
-              Is Testobooster Right for You?
+              Is Testro Booster Right for You?
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -594,7 +743,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* ⭐ TESTIMONIALS */}
+      {/* ⭐ TESTIMONIALS - Updated with Dawai Image */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -618,8 +767,16 @@ const HealthVedaMain = () => {
                 </p>
                 
                 <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center mr-4">
-                    <span className="text-xl">👤</span>
+                  <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center mr-4 overflow-hidden">
+                    {testimonial.image === '👤' ? (
+                      <span className="text-xl">{testimonial.image}</span>
+                    ) : (
+                      <img 
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
                   <div>
                     <h4 className="font-bold text-white">{testimonial.name}</h4>
@@ -629,6 +786,77 @@ const HealthVedaMain = () => {
               </div>
             ))}
           </div>
+          
+          {/* Dawai Image in Testimonials Section */}
+          <div className="mt-12 bg-gradient-to-r from-gray-800 to-black p-8 rounded-xl border border-gray-700">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-6 md:mb-0 md:mr-8">
+                <h3 className="text-2xl font-bold text-white mb-3">Real Product, Real Results</h3>
+                <p className="text-gray-300">
+                  Thousands of satisfied customers trust Testro Booster for their vitality needs. 
+                  Join them today and experience the difference.
+                </p>
+              </div>
+              <div className="w-48 h-48 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
+                <img 
+                  src={Dawai}
+                  alt="Testro Booster Product"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ⏰ DYNAMIC COUNTDOWN TIMER SECTION */}
+      <section className="py-12 bg-gradient-to-r from-red-900 via-black to-red-900">
+        <div className="container mx-auto px-4 text-center">
+          <div className="inline-block px-6 py-2 bg-yellow-500 text-black font-bold rounded-full mb-4 animate-pulse">
+            ⏰ Limited Time Offer Ends In
+          </div>
+          
+          <div className="mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+              Hurry! Special Price Ends Soon
+            </h2>
+            <p className="text-gray-300">Order within the next {timer.hours}h {timer.minutes}m {timer.seconds}s to get 50% OFF</p>
+          </div>
+          
+          {/* Timer Display */}
+          <div className="max-w-2xl mx-auto mb-8">
+            <div className="grid grid-cols-3 gap-4">
+              <div className="bg-black bg-opacity-50 p-6 rounded-xl border-2 border-yellow-500">
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2 animate-pulse">
+                  {formatTime(timer.hours)}
+                </div>
+                <div className="text-gray-300">Hours</div>
+              </div>
+              
+              <div className="bg-black bg-opacity-50 p-6 rounded-xl border-2 border-yellow-500">
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2 animate-pulse">
+                  {formatTime(timer.minutes)}
+                </div>
+                <div className="text-gray-300">Minutes</div>
+              </div>
+              
+              <div className="bg-black bg-opacity-50 p-6 rounded-xl border-2 border-yellow-500">
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2 animate-pulse">
+                  {formatTime(timer.seconds)}
+                </div>
+                <div className="text-gray-300">Seconds</div>
+              </div>
+            </div>
+            
+            <div className="mt-6 w-full bg-gray-700 rounded-full h-3">
+              <div 
+                className="bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 h-3 rounded-full transition-all duration-1000"
+                style={{ 
+                  width: `${((timer.hours * 3600 + timer.minutes * 60 + timer.seconds) / (4 * 3600 + 23 * 60 + 48)) * 100}%` 
+                }}
+              ></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -636,11 +864,11 @@ const HealthVedaMain = () => {
       <section className="py-16 bg-gradient-to-r from-red-900 via-black to-red-900">
         <div className="container mx-auto px-4 text-center">
           <div className="inline-block px-6 py-2 bg-yellow-500 text-black font-bold rounded-full mb-6 animate-pulse">
-            🔥 Limited Time Offer!
+            🔥 Limited Stock Available!
           </div>
           
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Get Testobooster at Special Price Today
+            Get Testro Booster at Special Price Today
           </h2>
           
           <div className="max-w-2xl mx-auto mb-8">
@@ -654,13 +882,25 @@ const HealthVedaMain = () => {
                 <div className="text-white font-semibold">Quality Assured</div>
               </div>
             </div>
+            
+            {/* Timer in offer section */}
+            <div className="bg-black bg-opacity-70 p-4 rounded-xl mb-6 border border-yellow-500">
+              <div className="flex items-center justify-center space-x-4 mb-2">
+                <span className="text-2xl text-yellow-400">⏰</span>
+                <span className="text-white font-bold">Offer Ends In:</span>
+                <span className="text-red-300 font-bold text-xl">
+                  {formatTime(timer.hours)}:{formatTime(timer.minutes)}:{formatTime(timer.seconds)}
+                </span>
+              </div>
+              <p className="text-gray-300 text-sm">Hurry! Only 12 units left in stock</p>
+            </div>
           </div>
 
           <button
             onClick={handleOrderClick}
-            className="px-12 py-6 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-bold text-2xl rounded-lg hover:from-red-700 hover:to-yellow-600 transition-all shadow-2xl hover:shadow-3xl transform hover:scale-105 mb-6"
+            className="px-12 py-6 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-bold text-2xl rounded-lg hover:from-red-700 hover:to-yellow-600 transition-all shadow-2xl hover:shadow-3xl transform hover:scale-105 mb-6 animate-bounce"
           >
-            🟥 ORDER NOW
+            🟥 ORDER NOW BEFORE TIMER ENDS
           </button>
           
           <p className="text-gray-300">
@@ -702,7 +942,7 @@ const HealthVedaMain = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
-                TESTOBOOSTER
+                TESTRO BOOSTER
               </h3>
               <p className="text-gray-400">
                 Premium male vitality support formula for modern lifestyle.
@@ -722,7 +962,7 @@ const HealthVedaMain = () => {
               <h4 className="text-lg font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>📞 +91 98765 43210</li>
-                <li>✉️ support@testobooster.com</li>
+                <li>✉️ support@testrobooster.com</li>
                 <li>📍 Made in India</li>
               </ul>
             </div>
@@ -743,10 +983,10 @@ const HealthVedaMain = () => {
               <span className="text-gray-300">Age Verified Content | 18+ Only</span>
             </div>
             <p className="text-gray-400 text-sm mb-4">
-              ⚠️ Disclaimer: Testobooster is a wellness supplement. These statements have not been evaluated by any medical authority. This product is not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Consult your healthcare professional before use.
+              ⚠️ Disclaimer: Testro Booster is a wellness supplement. These statements have not been evaluated by any medical authority. This product is not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Consult your healthcare professional before use.
             </p>
             <p className="text-gray-500">
-              © {new Date().getFullYear()} Testobooster. All rights reserved.
+              © {new Date().getFullYear()} Testro Booster. All rights reserved.
             </p>
           </div>
         </div>
