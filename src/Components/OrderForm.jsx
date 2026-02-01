@@ -2,6 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+// Original WhatsApp Icon Component
+const WhatsAppIcon = ({ className = "w-5 h-5" }) => (
+  <svg 
+    className={className}
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24"
+    fill="#25D366" // WhatsApp official green color
+  >
+    <path d="M20.5 3.5C18.7 1.7 16.3 0.5 13.8 0.5C8.2 0.5 3.8 4.9 3.8 10.5C3.8 12.2 4.2 13.8 5 15.2L3.5 20.5L8.8 19C10.2 19.7 11.9 20.1 13.8 20.1C19.4 20.1 23.8 15.7 23.8 10.1C23.8 7.6 22.6 5.2 20.5 3.5ZM13.8 18.6C12.1 18.6 10.5 18.2 9.1 17.5L8.8 17.3L6.2 18L6.9 15.5L6.7 15.2C5.9 13.8 5.5 12.2 5.5 10.6C5.5 6.2 9.2 2.5 13.8 2.5C15.8 2.5 17.7 3.2 19.2 4.7C20.7 6.2 21.5 8.1 21.5 10.1C21.5 14.7 17.8 18.6 13.8 18.6ZM17.5 14.2C17.3 14 16.9 13.9 16.6 14C16.3 14.1 15.6 14.4 15.1 14.5C14.6 14.6 14.2 14.6 13.8 14.4C13.4 14.2 12.8 13.9 12.3 13.4C11.8 12.9 11.4 12.3 11.2 11.9C11 11.5 11.1 11.1 11.2 10.8C11.3 10.5 11.5 10.2 11.6 10C11.7 9.8 11.7 9.6 11.6 9.4C11.5 9.2 11.1 8.2 10.9 7.7C10.7 7.2 10.5 7.3 10.3 7.3C10.1 7.3 9.9 7.3 9.7 7.3C9.5 7.3 9.2 7.4 9 7.6C8.8 7.8 8.3 8.3 8.3 9.2C8.3 10.1 9 11 9.2 11.2C9.4 11.4 11.2 13.1 13.5 13.9C14.1 14.1 14.6 14.3 15 14.3C15.4 14.3 15.7 14.2 15.9 14.1C16.1 14 16.6 13.7 16.8 13.4C17 13.1 17.2 12.9 17.3 12.8C17.4 12.7 17.6 12.6 17.7 12.7C17.8 12.8 18.1 13.1 18.2 13.2C18.3 13.3 18.4 13.4 18.5 13.5C18.6 13.6 18.7 13.8 18.7 14C18.7 14.2 18.6 14.5 18.5 14.7C18.4 14.9 17.7 14.4 17.5 14.2Z" />
+  </svg>
+);
+
 const OrderForm = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -11,8 +23,8 @@ const OrderForm = () => {
   const [apiStatus, setApiStatus] = useState('checking');
 
   // API base URL
-  // const API_BASE_URL = 'http://localhost:5000/api';
-  const API_BASE_URL=" https://testobackend-2.onrender.com/api";
+  const API_BASE_URL = 'http://localhost:5000/api';
+  // const API_BASE_URL= "https://testobackend-2.onrender.com/api";
 
   // Form state - UPDATED to match backend structure
   const [formData, setFormData] = useState({
@@ -355,31 +367,6 @@ const OrderForm = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
-        {/* API Status Indicator */}
-        {/* <div className={`mb-4 p-3 rounded-lg text-center text-sm font-medium ${
-          apiStatus === 'connected' 
-            ? 'bg-green-100 text-green-800 border border-green-200' 
-            : 'bg-yellow-100 text-yellow-800 border border-yellow-200'
-        }`}>
-          {apiStatus === 'connected' ? (
-            <div className="flex items-center justify-center">
-              <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-              ✅ Connected to backend API
-              <button 
-                onClick={handleTestEmail}
-                className="ml-4 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded hover:bg-blue-200"
-              >
-                Test Email
-              </button>
-            </div>
-          ) : (
-            <div className="flex items-center justify-center">
-              <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
-              ⚠️ Cannot connect to backend. Make sure server is running on port 5000.
-            </div>
-          )}
-        </div> */}
-
         {/* Header */}
         <div className="text-center mb-8">
           <button
@@ -397,28 +384,37 @@ const OrderForm = () => {
           <p className="text-gray-600">
             Fill in your details to order Testro Booster Capsules
           </p>
-          <p className="text-sm text-green-600 mt-2">
-            ✅ Orders placed will receive confirmation emails automatically
-          </p>
+          <div className="text-sm text-green-600 mt-2 flex items-center justify-center">
+            <WhatsAppIcon className="w-4 h-4 mr-2" />
+            Orders placed will receive confirmation emails automatically
+          </div>
         </div>
 
-        {/* Success Message */}
+        {/* Success Message - UPDATED with WhatsApp icon */}
         {success && (
           <div className="mb-6 p-6 bg-green-50 border border-green-200 rounded-lg animate-pulse">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <svg className="h-10 w-10 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
+                <div className="w-12 h-12 bg-[#25D366]/10 rounded-full flex items-center justify-center">
+                  <WhatsAppIcon className="w-8 h-8" />
+                </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-bold text-green-800">🎉 Order Placed Successfully!</h3>
-                <div className="mt-3 text-green-700 space-y-2">
-                  <p>Your order number is: <strong className="text-2xl text-green-900">{orderNumber}</strong></p>
-                  <p className="bg-green-100 p-2 rounded">A confirmation email has been sent to <strong>{formData.customerEmail}</strong></p>
-                  <p className="text-sm">📧 Check your inbox (and spam folder) for order details</p>
+                <h3 className="text-xl font-bold text-gray-800">🎉 Order Placed Successfully!</h3>
+                <div className="mt-3 text-gray-700 space-y-2">
+                  <p>Your order number is: <strong className="text-2xl text-blue-600">{orderNumber}</strong></p>
+                  <div className="bg-green-50 p-3 rounded border border-green-200 flex items-start">
+                    <WhatsAppIcon className="w-5 h-5 mt-0.5 mr-2 flex-shrink-0" />
+                    <span>
+                      A confirmation email has been sent to <strong>{formData.customerEmail}</strong>
+                    </span>
+                  </div>
+                  <div className="text-sm text-gray-600 flex items-start">
+                    <WhatsAppIcon className="w-4 h-4 mt-0.5 mr-2 flex-shrink-0" />
+                    <span>Check your inbox (and spam folder) for order details</span>
+                  </div>
                   <p className="text-sm mt-3 text-blue-600">
-                    ⏳ You will be redirected to the thank you page in 8 seconds...
+                    ⏳ You will be redirected to home page in 8 seconds...
                   </p>
                 </div>
               </div>
@@ -462,18 +458,6 @@ const OrderForm = () => {
           </div>
         )}
 
-        {/* Debug Info (remove in production) */}
-        {/* {process.env.NODE_ENV === 'development' && (
-          <div className="mb-4 p-3 bg-gray-100 rounded text-xs">
-            <details>
-              <summary className="cursor-pointer font-medium">Debug Info</summary>
-              <pre className="mt-2 text-xs overflow-auto">
-                {JSON.stringify(formData, null, 2)}
-              </pre>
-            </details>
-          </div>
-        )} */}
-
         {/* Order Form */}
         {!success && (
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -515,7 +499,10 @@ const OrderForm = () => {
                       placeholder="your@email.com"
                       disabled={loading}
                     />
-                    <p className="text-xs text-gray-500 mt-1">Confirmation email will be sent here</p>
+                    <div className="text-xs text-gray-500 mt-1 flex items-center">
+                      <WhatsAppIcon className="w-3 h-3 mr-1" />
+                      Confirmation email will be sent here
+                    </div>
                   </div>
                   
                   <div>
@@ -534,7 +521,10 @@ const OrderForm = () => {
                       placeholder="9876543210"
                       disabled={loading}
                     />
-                    <p className="text-xs text-gray-500 mt-1">10-digit Indian number (no +91 needed)</p>
+                    <div className="text-xs text-gray-500 mt-1 flex items-center">
+                      <WhatsAppIcon className="w-3 h-3 mr-1" />
+                      10-digit Indian number (no +91 needed)
+                    </div>
                   </div>
                 </div>
               </div>
@@ -644,7 +634,10 @@ const OrderForm = () => {
                     <div>
                       <h3 className="font-medium text-gray-800">{formData.products[0].name}</h3>
                       <p className="text-sm text-gray-600 mt-1">Advanced male vitality supplement</p>
-                      <p className="text-xs text-blue-600 mt-1">Order ID will be generated automatically</p>
+                      <div className="text-xs text-blue-600 mt-1 flex items-center">
+                        <WhatsAppIcon className="w-3 h-3 mr-1" />
+                        Order ID will be generated automatically
+                      </div>
                     </div>
                     
                     <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
@@ -689,24 +682,27 @@ const OrderForm = () => {
                           {formData.products[0].capsuleType === 'Regular' && formData.products[0].quantity === 1 ? (
                             <span>Regular price</span>
                           ) : formData.products[0].capsuleType === 'Regular' && formData.products[0].quantity >= 3 ? (
-                            <span className="text-green-600">Discounted price</span>
+                            <span className="text-green-600 flex items-center">
+                              <WhatsAppIcon className="w-3 h-3 mr-1" />
+                              Discounted price
+                            </span>
                           ) : null}
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Discount Badge */}
+                  {/* Discount Badge - UPDATED with WhatsApp icon */}
                   {formData.products[0].capsuleType === 'Regular' && formData.products[0].quantity >= 3 && (
-                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+                    <div className="bg-[#25D366]/10 border border-[#25D366]/30 rounded-lg p-3 mb-4">
                       <div className="flex items-center">
-                        <span className="text-yellow-600 mr-2">🎉</span>
-                        <span className="text-yellow-800 font-medium">
+                        <WhatsAppIcon className="w-5 h-5 mr-2" />
+                        <span className="text-[#075E54] font-medium">
                           {formData.products[0].quantity >= 6 ? 
                             `Great Deal! You save ${formatINR((1499 - 1299) * formData.products[0].quantity)}` : 
                             `Great Deal! You save ${formatINR((1499 - 1399) * formData.products[0].quantity)}`}
                         </span>
-                        <span className="ml-2 text-sm text-yellow-600">
+                        <span className="ml-2 text-sm text-[#128C7E]">
                           {formData.products[0].quantity >= 3 && '(Free shipping included)'}
                         </span>
                       </div>
@@ -733,7 +729,10 @@ const OrderForm = () => {
                       <span className="text-gray-600">Shipping Fee</span>
                       <span className="font-medium">
                         {formData.shippingFee === 0 ? (
-                          <span className="text-green-600 font-bold">FREE</span>
+                          <span className="text-[#25D366] font-bold flex items-center">
+                            <WhatsAppIcon className="w-4 h-4 mr-1" />
+                            FREE
+                          </span>
                         ) : (
                           formatINR(formData.shippingFee)
                         )}
@@ -750,18 +749,22 @@ const OrderForm = () => {
                           {formatINR(formData.totalAmount)}
                         </span>
                         {formData.shippingFee === 0 && (
-                          <p className="text-xs text-green-600 mt-1">Free shipping applied</p>
+                          <div className="text-xs text-[#25D366] mt-1 flex items-center justify-end">
+                            <WhatsAppIcon className="w-3 h-3 mr-1" />
+                            Free shipping applied
+                          </div>
                         )}
                       </div>
                     </div>
                   </div>
 
-                  {/* Savings Info */}
+                  {/* Savings Info - UPDATED with WhatsApp icon */}
                   {formData.products[0].capsuleType === 'Regular' && formData.products[0].quantity >= 3 && (
-                    <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                    <div className="mt-4 p-3 bg-[#25D366]/10 border border-[#25D366]/30 rounded-lg">
                       <div className="flex items-center justify-between">
-                        <span className="text-green-800">
-                          ✅ You saved {formatINR(calculateSavings())} with this order
+                        <span className="text-[#075E54] flex items-center">
+                          <WhatsAppIcon className="w-4 h-4 mr-2" />
+                          You saved {formatINR(calculateSavings())} with this order
                         </span>
                       </div>
                     </div>
@@ -834,9 +837,10 @@ const OrderForm = () => {
                     By placing your order, you agree to our{' '}
                     <a href="#" className="text-blue-600 hover:text-blue-800">Terms & Conditions</a>
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-gray-500 mt-1 flex items-center">
+                    <WhatsAppIcon className="w-3 h-3 mr-1" />
                     A confirmation email will be sent automatically
-                  </p>
+                  </div>
                 </div>
                 
                 <button
@@ -872,13 +876,22 @@ const OrderForm = () => {
           </div>
         )}
 
-        {/* Support Info */}
-        <div className="mt-8 text-center text-gray-600 text-sm">
-          <p>Need help? Contact us at support@testrobooster.com or call +91 98765 43210</p>
-          <p className="mt-1">We'll send order confirmation and tracking details to your email</p>
-          <p className="mt-2 text-green-600 font-medium">
-            ✅ Free Shipping on orders of 3 or more bottles! | ✅ Automatic Email Confirmation
-          </p>
+        {/* Support Info - UPDATED with WhatsApp icons */}
+        <div className="mt-8 text-center text-gray-600 text-sm space-y-2">
+          <div className="flex items-center justify-center">
+            <WhatsAppIcon className="w-4 h-4 mr-2" />
+            <p>Need help? Contact us at support@testrobooster.com or call +91 98765 43210</p>
+          </div>
+          <div className="flex items-center justify-center">
+            <WhatsAppIcon className="w-4 h-4 mr-2" />
+            <p>We'll send order confirmation and tracking details to your email</p>
+          </div>
+          <div className="text-[#25D366] font-medium flex items-center justify-center">
+            <WhatsAppIcon className="w-4 h-4 mr-2" />
+            Free Shipping on orders of 3 or more bottles! 
+            <WhatsAppIcon className="w-4 h-4 mx-2" />
+            Automatic Email Confirmation
+          </div>
           <p className="mt-2 text-xs text-gray-500">
             Backend: {API_BASE_URL} | Status: {apiStatus === 'connected' ? '🟢 Connected' : '🔴 Disconnected'}
           </p>

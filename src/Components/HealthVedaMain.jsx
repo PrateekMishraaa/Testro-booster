@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BsWhatsapp } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 import Veda from "../assets/testro.jpeg";
 import Dawai from "../assets/dawai.jpeg";
@@ -208,15 +209,8 @@ const HealthVedaMain = () => {
   // Media Gallery Data - Removed duplicates, each image/video used only once
   const mediaGallery = [
     { type: 'video', src: One, title: 'Before & After Transformation', desc: 'Real user results', id: 'video-1' },
-    // { type: 'image', src: Two, title: 'Premium Packaging', desc: 'Hygienic & Secure', id: 'image-2' },
     { type: 'image', src: Three, title: 'Natural Ingredients', desc: 'Pure & Potent', id: 'image-3' },
-    // { type: 'video', src: Four, title: 'How It Works', desc: 'Mechanism explained', id: 'video-4' },
     { type: 'image', src: Five, title: 'Capsule Close-up', desc: 'Easy to swallow', id: 'image-5' },
-    // { type: 'image', src: Six, title: 'Quality Assurance', desc: 'Lab tested', id: 'image-6' },
-    // { type: 'video', src: Seven, title: 'Customer Reviews', desc: 'Real testimonials', id: 'video-7' },
-    // { type: 'video', src: Eight, title: 'Manufacturing Process', desc: 'GMP certified', id: 'video-8' },
-    // { type: 'image', src: Nine, title: 'Results Timeline', desc: 'Expected progress', id: 'image-9' },
-    // { type: 'video', src: Ten, title: 'Final Results', desc: 'Complete transformation', id: 'video-10' }
   ];
 
   // Don't render main content if age not verified or under 18
@@ -310,7 +304,7 @@ const HealthVedaMain = () => {
           className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-2xl hover:shadow-green-500/30 transition-all hover:scale-110"
           title="Chat on WhatsApp"
         >
-          <span className="text-3xl">💬</span>
+          <BsWhatsapp className="text-white text-2xl" />
         </button>
         
         {/* Call Button */}
@@ -430,7 +424,7 @@ const HealthVedaMain = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {mediaGallery.slice(0, 8).map((media, index) => (
+            {mediaGallery.map((media, index) => (
               <div 
                 key={media.id}
                 className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-300 hover:transform hover:-translate-y-1"
@@ -473,48 +467,6 @@ const HealthVedaMain = () => {
                 <div className="p-4">
                   <h3 className="text-white font-bold mb-1">{media.title}</h3>
                   <p className="text-gray-400 text-sm">{media.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          {/* Last two larger items */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-            {mediaGallery.slice(8, 10).map((media) => (
-              <div 
-                key={media.id}
-                className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-300"
-              >
-                <div className="relative h-64 md:h-80">
-                  {media.type === 'video' ? (
-                    <>
-                      <video
-                        className="w-full h-full object-cover"
-                        src={media.src}
-                        muted
-                        loop
-                        autoPlay={isPlaying[media.id]}
-                        poster={Nine}
-                        onClick={() => toggleVideoPlay(media.id)}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                        <h3 className="text-white text-2xl font-bold mb-2">{media.title}</h3>
-                        <p className="text-gray-300">{media.desc}</p>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <img
-                        src={media.src}
-                        alt={media.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                        <h3 className="text-white text-2xl font-bold mb-2">{media.title}</h3>
-                        <p className="text-gray-300">{media.desc}</p>
-                      </div>
-                    </>
-                  )}
                 </div>
               </div>
             ))}
