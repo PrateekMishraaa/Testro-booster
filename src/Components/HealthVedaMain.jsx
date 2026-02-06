@@ -13,6 +13,7 @@ import Seven from "../assets/11074.mp4";
 import Eight from "../assets/11076.mp4";
 import Nine from "../assets/11078.jpg";
 import Ten from "../assets/11081.mp4";
+import BabaRamdev from "../assets/baba.jpeg"; // नई Baba Ramdev फोटो जोड़ें
 
 const HealthVedaMain = () => {
   const navigate = useNavigate();
@@ -839,7 +840,7 @@ const HealthVedaMain = () => {
             ))}
           </div>
           
-          {/* Baba Ramdev Section */}
+          {/* Baba Ramdev Section WITH PHOTO */}
           <div className="mt-12 bg-gradient-to-r from-orange-900/30 to-yellow-900/30 p-8 rounded-xl border border-yellow-700">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-8">
@@ -856,9 +857,19 @@ const HealthVedaMain = () => {
                   </ul>
                 </div>
               </div>
-              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-yellow-500 shadow-xl">
-                <div className="w-full h-full bg-gradient-to-br from-orange-600 to-yellow-500 flex items-center justify-center">
-                  <span className="text-6xl">🧘</span>
+              <div className="w-64 h-64 rounded-lg overflow-hidden border-4 border-yellow-500 shadow-xl">
+                <img 
+                  src={BabaRamdev}
+                  alt="Baba Ramdev"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D';
+                  }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 text-center">
+                  <p className="text-white font-bold">बाबा रामदेव</p>
+                  <p className="text-yellow-300 text-sm">योग गुरु और आयुर्वेद विशेषज्ञ</p>
                 </div>
               </div>
             </div>
@@ -1095,7 +1106,7 @@ const HealthVedaMain = () => {
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">हमारी कहानी</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">मिशन</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">गुणवत्ता मानक</a></li>
+                <li><a href="#" className="text-gray400 hover:text-yellow-400 transition">गुणवत्ता मानक</a></li>
               </ul>
             </div>
             
