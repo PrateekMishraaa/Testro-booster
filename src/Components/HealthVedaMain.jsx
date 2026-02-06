@@ -120,97 +120,91 @@ const HealthVedaMain = () => {
 
   // Data arrays
   const trustBadges = [
-    { text: 'Premium Formula', icon: '✅' },
-    { text: 'Fast Absorbing', icon: '⚡' },
-    { text: 'Designed for Men', icon: '👨' }
+    { text: 'AYUSH/FSASI Approved', icon: '✅' },
+    { text: 'Made in India', icon: '🇮🇳' },
+    { text: 'Natural Formula', icon: '🌿' }
   ];
 
   const problemPoints = [
-    { icon: '❌', text: 'Thakaan & low stamina' },
-    { icon: '❌', text: 'Lack of confidence' },
-    { icon: '❌', text: 'Weak gym performance' },
-    { icon: '❌', text: 'Stressful lifestyle effects' }
+    { icon: '❌', text: 'कमजोर मर्दानगी' },
+    { icon: '❌', text: 'कम समय के संभोग' },
+    { icon: '❌', text: 'आत्म-विश्वास की कमी' },
+    { icon: '❌', text: 'यौन संतुष्टि न होना' }
   ];
 
   const keyBenefits = [
-    { icon: '⚡', title: 'Boosts stamina & daily energy' },
-    { icon: '💪', title: 'Improves performance & drive' },
-    { icon: '🔥', title: 'Supports muscle strength' },
-    { icon: '👑', title: 'Enhances confidence' },
-    { icon: '🔄', title: 'Better recovery & focus' },
-    { icon: '🧬', title: 'Supports natural vitality' }
+    { icon: '📏', title: 'लिंग का आकार 8-9 सेमी बढ़ाए' },
+    { icon: '⏱️', title: 'संभोग अवधि 20 मिनट तक' },
+    { icon: '💪', title: 'सख्त और स्थायी खड़ापन' },
+    { icon: '🔥', title: 'लगातार पाँच बार संभोग' },
+    { icon: '🧬', title: 'प्राकृतिक हॉर्मोन बढ़ाए' },
+    { icon: '⚡', title: 'ऊर्जा और स्टैमिना बढ़ाए' }
   ];
 
   const ingredients = [
-    { name: 'Ashwagandha', benefit: 'Stress Support' },
-    { name: 'Safed Musli', benefit: 'Energy Support' },
-    { name: 'Kaunch Beej', benefit: 'Wellness Support' },
-    { name: 'Gokshura', benefit: 'Strength Support' },
-    { name: 'Zinc', benefit: 'Essential Mineral' },
-    { name: 'Vitamin D3', benefit: 'Overall Health' }
+    { name: 'Ashwagandha', benefit: 'ताकत बढ़ाए' },
+    { name: 'Safed Musli', benefit: 'ऊर्जा दें' },
+    { name: 'Kaunch Beej', benefit: 'वीर्यवर्धक' },
+    { name: 'Gokshura', benefit: 'शक्ति बढ़ाए' },
+    { name: 'Shilajit', benefit: 'पुनर्योजी' },
+    { name: 'Vitamin D3', benefit: 'समग्र स्वास्थ्य' }
   ];
 
   const workingSteps = [
-    { step: '1', icon: '🧬', title: 'Absorbs fast in body', desc: 'Quick absorption for effective results' },
-    { step: '2', icon: '⚡', title: 'Supports energy & strength', desc: 'Enhances physical performance' },
-    { step: '3', icon: '🔥', title: 'Helps you feel confident', desc: 'Promotes overall wellbeing' }
-  ];
-
-  const userTypes = [
-    'Gym & fitness enthusiasts',
-    'Busy professionals',
-    'Men feeling low energy',
-    'Anyone wanting better performance'
+    { step: '1', icon: '🧬', title: 'कैवर्नस प्रकोष में बढ़त', desc: '25 साल के बाद भी लिंग बढ़ता है' },
+    { step: '2', icon: '⚡', title: 'रक्त धमनियाँ चौड़ी होती हैं', desc: 'बेहतर रक्त प्रवाह होता है' },
+    { step: '3', icon: '🔥', title: 'सेक्स हॉर्मोन बढ़ते हैं', desc: 'प्राकृतिक मर्दानगी वापस आती है' }
   ];
 
   const testimonials = [
     {
       rating: 5,
-      text: 'Energy aur stamina kaafi improve hui. Regular workouts mein fark mehsoos hota hai.',
-      name: 'Rajesh Kumar',
-      location: 'Delhi',
+      text: 'मेरा लिंग 15 से 18 सेमी का हो गया और अब सेक्स बोरिंग नहीं है। Testro Booster से मुझे वाकई में बहुत आश्चर्य हुआ है।',
+      name: 'पार्थ',
+      location: 'ग्राहक',
       image: '👤'
     },
     {
       rating: 5,
-      text: 'Confidence pehle se strong feel hota hai. Office meetings mein better performance.',
-      name: 'Vikram Singh',
-      location: 'Mumbai',
+      text: 'केवल 12 दिनों में 8-9 सेमी बढ़ोतरी। संभोग की अवधि काफी बढ़ गई और स्थिरता मिली।',
+      name: 'अजय कुमार',
+      location: 'दिल्ली',
       image: '👤'
     },
     {
       rating: 5,
-      text: 'Gym performance noticeable better hui. Recovery time kam hua.',
-      name: 'Arjun Patel',
-      location: 'Bangalore',
+      text: '60 साल की उम्र में भी मर्दानगी वापस लाना संभव है। अब मैं कई घंटों तक संभोग कर सकता हूं।',
+      name: 'अनुभवी ग्राहक',
+      location: 'मुंबई',
       image: '👤'
     }
   ];
 
   const faqs = [
     {
-      q: 'Kitne time me result dikhega?',
-      a: 'Regular use se gradual results feel hote hain. Most users notice improvements within 2-4 weeks of consistent use.'
+      q: 'कितने दिन में परिणाम दिखेगा?',
+      a: 'केवल 12 दिनों में आप लिंग का आकार कम से कम 8-9 सेंटीमीटर तक बढ़ा सकते हैं और पहले परिणाम एक हफ्ते में ही नजर आने लगते हैं।'
     },
     {
-      q: 'Daily use safe hai?',
-      a: 'Yes, recommended dosage ke saath safe hai. Hamara formula natural ingredients se bana hai.'
+      q: 'क्या यह वायाग्रा से बेहतर है?',
+      a: 'हाँ, वायाग्रा सिर्फ रक्त पंप करती है जबकि Testro Booster प्राकृतिक सेक्स हॉर्मोन बढ़ाता है और स्थायी खड़ापन देता है।'
     },
     {
-      q: 'Gym na karte ho tab bhi use kar sakte hain?',
-      a: 'Haan, daily energy & confidence ke liye bhi effective hai. General wellness ke liye bhi use kar sakte hain.'
+      q: 'क्या यह सुरक्षित है?',
+      a: 'हाँ, यह स्वास्थ्य और परिवार कल्याण मंत्रालय द्वारा प्रमाणित है और AYUSH/FSASI एप्रूव्ड है।'
     },
     {
-      q: 'Kya side effects hain?',
-      a: 'Natural ingredients ke saath, side effects minimal hain. Phir bhi, doctor se consult karein agar koi medical condition ho.'
+      q: 'क्या परिणाम स्थायी हैं?',
+      a: 'हाँ, निर्देशों के अनुसार उपयोग से मिलने वाले नतीजे स्थायी रहते हैं।'
     }
   ];
 
-  // Media Gallery Data - Removed duplicates, each image/video used only once
+  // Media Gallery Data
   const mediaGallery = [
-    { type: 'video', src: One, title: 'Before & After Transformation', desc: 'Real user results', id: 'video-1' },
-    { type: 'image', src: Three, title: 'Natural Ingredients', desc: 'Pure & Potent', id: 'image-3' },
-    { type: 'image', src: Five, title: 'Capsule Close-up', desc: 'Easy to swallow', id: 'image-5' },
+    { type: 'video', src: One, title: '12 दिनों में परिवर्तन', desc: '8-9 सेमी बढ़ोतरी', id: 'video-1' },
+    { type: 'image', src: Three, title: 'प्राकृतिक सामग्री', desc: 'शुद्ध और प्रभावी', id: 'image-3' },
+    { type: 'image', src: Five, title: 'Testro Booster', desc: 'आसान निगलने योग्य', id: 'image-5' },
+    { type: 'video', src: Four, title: 'कार्य प्रणाली', desc: 'वैज्ञानिक तरीका', id: 'video-2' },
   ];
 
   // Don't render main content if age not verified or under 18
@@ -322,7 +316,7 @@ const HealthVedaMain = () => {
         ✅ Age Verified | Welcome to Testro Booster
       </div>
 
-      {/* 🔥 HERO SECTION */}
+      {/* 🔥 HERO SECTION - Updated with new content */}
       <section className="relative bg-gradient-to-b from-gray-900 via-black to-gray-900 overflow-hidden">
         {/* Gold accents */}
         <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-yellow-600/10 to-transparent rounded-full blur-3xl"></div>
@@ -332,36 +326,53 @@ const HealthVedaMain = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Text */}
             <div className="text-white">
+              {/* Government of India Badge */}
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full mb-6">
-                <span className="font-bold text-sm">PREMIUM FORMULA</span>
+                <span className="font-bold text-sm">स्वास्थ्य और परिवार कल्याण मंत्रालय प्रमाणित</span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                   TESTRO BOOSTER
                 </span>
               </h1>
               
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Unleash Your Inner Power
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+                लिंग का आकार बढ़ाने और संभोग की अवधि बढ़ाने का वैज्ञानिक तरीका
               </h2>
               
-              <p className="text-xl text-gray-300 mb-8">
-                High-performance male vitality formula jo support karta hai:
-              </p>
+              <div className="bg-red-900/30 border-l-4 border-yellow-500 p-4 mb-6 rounded-r-lg">
+                <p className="text-xl text-white font-bold">
+                  आप 12 दिनों में, लिंग का आकार कम से कम 8-9 सेंटीमीटर तक बढ़ा सकते हैं और लगातार पाँच बार संभोग कर सकते हैं
+                </p>
+              </div>
               
               <div className="flex flex-wrap gap-4 mb-8">
                 <div className="flex items-center space-x-2">
+                  <span className="text-2xl">📏</span>
+                  <span className="text-gray-300">लंबा और मोटा लिंग</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-2xl">⏱️</span>
+                  <span className="text-gray-300">20+ मिनट संभोग</span>
+                </div>
+                <div className="flex items-center space-x-2">
                   <span className="text-2xl">💪</span>
-                  <span className="text-gray-300">Strength</span>
+                  <span className="text-gray-300">सख्त खड़ापन</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-2xl">⚡</span>
-                  <span className="text-gray-300">Stamina</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-2xl">🔥</span>
-                  <span className="text-gray-300">Confidence</span>
+              </div>
+              
+              {/* Price Section */}
+              <div className="bg-gray-800/50 p-4 rounded-lg mb-6">
+                <div className="flex items-center space-x-4">
+                  <div>
+                    <p className="text-gray-400 line-through">पुरानी कीमत: ₹5000</p>
+                    <p className="text-3xl font-bold text-yellow-400">नई कीमत: ₹1485</p>
+                    <p className="text-green-400 font-bold">70% छूट</p>
+                  </div>
+                  <div className="bg-red-700 px-3 py-1 rounded-full">
+                    <p className="text-white text-sm font-bold">सीमित समय ऑफर</p>
+                  </div>
                 </div>
               </div>
               
@@ -371,13 +382,13 @@ const HealthVedaMain = () => {
                   onClick={handleOrderClick}
                   className="px-8 py-4 bg-gradient-to-r from-red-700 to-yellow-600 text-white font-bold rounded-lg hover:from-red-800 hover:to-yellow-700 transition-all shadow-lg hover:shadow-2xl transform hover:-translate-y-1 text-lg"
                 >
-                  🟥 BUY NOW
+                  🟥 अभी ऑर्डर करें
                 </button>
                 <button 
                   onClick={handleWhatsAppClick}
                   className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition-all"
                 >
-                  📞 CONSULT NOW
+                  📞 मुफ्त परामर्श
                 </button>
               </div>
               
@@ -406,6 +417,10 @@ const HealthVedaMain = () => {
                       e.target.src = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop';
                     }}
                   />
+                  <div className="text-center mt-4">
+                    <p className="text-yellow-400 font-bold">FREE SHIPPING ON PREPAID</p>
+                    <p className="text-gray-300">अभी ऑर्डर करें और मुफ्त शिपिंग पाएं</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -417,10 +432,10 @@ const HealthVedaMain = () => {
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-            See Testro Booster in Action
+            देखें Testro Booster का जादू
           </h2>
           <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            Visual proof of quality, results, and transformation
+            वास्तविक परिणाम, वास्तविक परिवर्तन, वास्तविक संतुष्टि
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -474,65 +489,75 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* ⚠️ PROBLEM AWARENESS SECTION */}
+      {/* ⚠️ PROBLEM AWARENESS SECTION - Updated */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
+          <div className="max-w-6xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Feeling Low on Energy & Performance?
+              क्या आप इन समस्याओं से परेशान हैं?
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {problemPoints.map((point, index) => (
-                <div key={index} className="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                <div key={index} className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-red-500 transition-all">
                   <div className="text-3xl mb-3">{point.icon}</div>
-                  <p className="text-gray-300">{point.text}</p>
+                  <p className="text-gray-300 text-lg">{point.text}</p>
                 </div>
               ))}
             </div>
             
-            <p className="text-xl text-gray-400 italic">
-              Modern lifestyle silently affects male performance.
+            <div className="bg-red-900/30 p-6 rounded-xl border border-red-700 mb-8">
+              <p className="text-xl text-white italic">
+                "मैं भी इसी बात को लेकर कई साल से परेशान था कि मुझे सेक्स में मजा नहीं आता था। यह इतना बिगड़ गया कि मैं अपनी बीवी से महीने में एक बार ही सेक्स करता था..."
+              </p>
+            </div>
+            
+            <p className="text-xl text-gray-400">
+              याद रखे कि सेक्स और बिस्तर में संतुष्टि एक औरत के लिए बहुत अहम चीजें होती हैं, खासकर जवान औरतों के लिए।
             </p>
           </div>
         </div>
       </section>
 
-      {/* 🔧 SOLUTION SECTION */}
+      {/* 🔧 SOLUTION SECTION - Updated */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-              The Solution: <span className="text-yellow-400">TESTRO BOOSTER</span>
+              समाधान: <span className="text-yellow-400">TESTRO BOOSTER</span>
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Testro Booster specially banaya gaya hai un mardon ke liye jo apni natural masculine energy ko revive karna chahte hain. Advanced formula jo scientifically designed hai optimum results ke liye.
-                </p>
+                <div className="bg-green-900/20 border-l-4 border-green-500 p-6 rounded-r-lg mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3">वैज्ञानिक कार्यप्रणाली</h3>
+                  <p className="text-gray-300">
+                    पुरुष शरीर में कैवर्नस प्रकोष की बढ़त 25 साल की उम्र तक पूरी हो जाती है। जब Testro Booster उपयोग किया जाता है तो यह प्रक्रिया फिर से चालू हो जाती है और रक्त धमनियाँ चौड़ी होने लगती हैं।
+                  </p>
+                </div>
                 
-                {/* Energy Meter */}
-                <div className="bg-gray-800 p-6 rounded-xl border border-gray-700 mb-8">
-                  <div className="flex justify-between mb-2">
-                    <span className="text-gray-400">Before</span>
-                    <span className="text-yellow-400">After</span>
-                  </div>
-                  <div className="h-4 bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-red-600 via-yellow-500 to-yellow-400 w-3/4"></div>
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <div className="text-center">
-                      <div className="text-2xl">⚡</div>
-                      <div className="text-sm text-gray-400">Low Energy</div>
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white">✓</span>
                     </div>
-                    <div className="text-center">
-                      <div className="text-2xl">💪</div>
-                      <div className="text-sm text-gray-400">Moderate</div>
+                    <div>
+                      <h4 className="text-xl font-bold text-white mb-1">वायाग्रा से बेहतर</h4>
+                      <p className="text-gray-300">
+                        वायाग्रा जैसी सभी आर्टिफिशियल दवाएं बस लिंग में रक्त "पंप" कर देती है जिससे हृदय पर बहुत लोड पड़ता है। वहीं Testro Booster पुरुष सेक्स हॉर्मोन बढ़ाना उत्प्रेरित करता है।
+                      </p>
                     </div>
-                    <div className="text-center">
-                      <div className="text-2xl">🔥</div>
-                      <div className="text-sm text-yellow-400">Peak Performance</div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white">✓</span>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-white mb-1">स्थायी परिणाम</h4>
+                      <p className="text-gray-300">
+                        Testro Booster के निर्देशों के अनुसार उपयोग से मिलने वाले नतीजे स्थायी रहते हैं। इसका असर निजी गुण-धर्मों पर निर्भर करता है लेकिन पहले नतीजे एक हफ्ते में ही नजर आने लगते हैं।
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -556,8 +581,8 @@ const HealthVedaMain = () => {
                       </div>
                     </div>
                     <div className="text-center text-white">
-                      <h3 className="text-2xl font-bold">Premium Capsules</h3>
-                      <p className="text-gray-400">Fast Absorption Formula</p>
+                      <h3 className="text-2xl font-bold">प्रीमियम कैप्सूल</h3>
+                      <p className="text-gray-400">तेज अवशोषण फॉर्मूला</p>
                     </div>
                   </div>
                   
@@ -572,17 +597,28 @@ const HealthVedaMain = () => {
                     ))}
                   </div>
                 </div>
+                
+                {/* Guarantee Badge */}
+                <div className="mt-6 bg-blue-900/30 p-4 rounded-lg border border-blue-700">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-3xl">✅</span>
+                    <div>
+                      <p className="text-white font-bold">GUARANTEED SAFE CHECKOUT</p>
+                      <p className="text-gray-300 text-sm">VISA • Mastercard • NET Banking • PhonePe</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 🎯 KEY BENEFITS SECTION */}
+      {/* 🎯 KEY BENEFITS SECTION - Updated */}
       <section className="py-16 bg-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-            What Testro Booster Does for You
+            Testro Booster के लाभ
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -595,6 +631,14 @@ const HealthVedaMain = () => {
                 <h3 className="text-xl font-semibold text-white mb-2">
                   {benefit.title}
                 </h3>
+                <p className="text-gray-400">
+                  {index === 0 && "12 दिनों में दिखने लगते हैं परिणाम"}
+                  {index === 1 && "संभोग की अवधि कम से कम 20 मिनट तक बढ़ जाएगी"}
+                  {index === 2 && "एक मर्द को नियमित, सख्त और स्थायी खड़ापन मिलता है"}
+                  {index === 3 && "आपकी महिला स्थिति को लगातार पाँच बार कमोन्माद आ पाएगा"}
+                  {index === 4 && "मर्द के शरीर में सेक्स हॉर्मोन ज्यादा बनने से आर्थिक ध्यान का लाभ है"}
+                  {index === 5 && "थकान नहीं होती, जवानी का एहसास आ जाता है"}
+                </p>
               </div>
             ))}
           </div>
@@ -606,7 +650,7 @@ const HealthVedaMain = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-              Advanced Male Vitality Formula
+              उन्नत पुरुष शक्ति फॉर्मूला
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -626,8 +670,8 @@ const HealthVedaMain = () => {
                           }}
                         />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2">Premium Packaging</h3>
-                      <p className="text-gray-400">Hygienic & Protective</p>
+                      <h3 className="text-xl font-bold text-white mb-2">प्रीमियम पैकेजिंग</h3>
+                      <p className="text-gray-400">स्वच्छ और सुरक्षात्मक</p>
                     </div>
                   </div>
                 </div>
@@ -656,58 +700,40 @@ const HealthVedaMain = () => {
               <div>
                 <div className="bg-gray-800 p-8 rounded-xl border border-gray-700 h-full">
                   <h3 className="text-2xl font-bold text-white mb-6">
-                    Powerful Natural Support
+                    शक्तिशाली प्राकृतिक समर्थन
                   </h3>
                   
                   <p className="text-gray-300 mb-6 leading-relaxed">
-                    Powerful natural extracts jo body ke natural process ko support karte hain — bina harmful chemicals ke. Every ingredient is carefully selected for maximum effectiveness.
+                    शक्तिशाली प्राकृतिक अर्क जो शरीर की प्राकृतिक प्रक्रियाओं का समर्थन करते हैं — बिना हानिकारक रसायनों के। हर सामग्री को अधिकतम प्रभावशीलता के लिए सावधानीपूर्वक चुना गया है।
                   </p>
-                  
-                  {/* Small Image Grid */}
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    <div className="rounded-lg overflow-hidden">
-                      <img 
-                        src={Three}
-                        alt="Natural Ingredients"
-                        className="w-full h-24 object-cover"
-                      />
-                    </div>
-                    <div className="rounded-lg overflow-hidden">
-                      <img 
-                        src={Six}
-                        alt="Quality Lab"
-                        className="w-full h-24 object-cover"
-                      />
-                    </div>
-                    <div className="rounded-lg overflow-hidden">
-                      <img 
-                        src={Nine}
-                        alt="Results Timeline"
-                        className="w-full h-24 object-cover"
-                      />
-                    </div>
-                  </div>
                   
                   <div className="space-y-4 mb-8">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full flex items-center justify-center">
                         <span className="text-white">✔</span>
                       </div>
-                      <span className="text-gray-300">Premium Quality Ingredients</span>
+                      <span className="text-gray-300">प्रीमियम गुणवत्ता वाली सामग्री</span>
                     </div>
                     
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full flex items-center justify-center">
                         <span className="text-white">✔</span>
                       </div>
-                      <span className="text-gray-300">Safe & Effective Formula</span>
+                      <span className="text-gray-300">सुरक्षित और प्रभावी फॉर्मूला</span>
                     </div>
                     
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full flex items-center justify-center">
                         <span className="text-white">✔</span>
                       </div>
-                      <span className="text-gray-300">Easy to Consume Capsules</span>
+                      <span className="text-gray-300">आसान सेवन योग्य कैप्सूल</span>
+                    </div>
+                    
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-gradient-to-r from-red-700 to-yellow-600 rounded-full flex items-center justify-center">
+                        <span className="text-white">✔</span>
+                      </div>
+                      <span className="text-gray-300">60 साल की उम्र में भी प्रभावी</span>
                     </div>
                   </div>
                 </div>
@@ -717,11 +743,11 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🔄 HOW IT WORKS with Video */}
+      {/* 🔄 HOW IT WORKS with Video - Updated */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-            How Testro Booster Works
+            Testro Booster कैसे काम करता है
           </h2>
           
           <div className="max-w-6xl mx-auto">
@@ -743,36 +769,26 @@ const HealthVedaMain = () => {
                   <p className="text-gray-400 mb-6">
                     {step.desc}
                   </p>
-                  
-                  {/* Video in Step 1 */}
-                  {step.step === '1' && (
-                    <div className="mt-4">
-                      <div className="w-full h-48 rounded-lg overflow-hidden border-2 border-yellow-500">
-                        <video
-                          className="w-full h-full object-cover"
-                          src={Four}
-                          muted
-                          loop
-                          autoPlay
-                        />
-                      </div>
-                      <p className="text-gray-400 text-sm mt-2">Fast absorption demonstration</p>
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
             
             {/* Video Banner Below Steps */}
-            <div className="mt-12 bg-gradient-to-r from-gray-800 to-black p-6 rounded-xl border border-gray-700">
+            <div className="mt-12 bg-gradient-to-r from-gray-800 to-black p-8 rounded-xl border border-gray-700">
               <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="mb-6 md:mb-0 md:mr-8">
-                  <h3 className="text-2xl font-bold text-white mb-3">Watch How It Works</h3>
-                  <p className="text-gray-300">
-                    See the complete mechanism of Testro Booster in action. Each capsule works systematically to deliver results.
+                  <h3 className="text-2xl font-bold text-white mb-3">वैज्ञानिक तरीके से काम करता है</h3>
+                  <p className="text-gray-300 mb-4">
+                    कैवर्नस प्रकोष में रक्त भरने लगता है और लिंग ज्यादा बड़ा होने लगता है। यह प्रक्रिया फिर से चालू हो जाती है और रक्त धमनियाँ चौड़ी होने लगती हैं।
                   </p>
+                  <button
+                    onClick={handleOrderClick}
+                    className="px-6 py-3 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-bold rounded-lg hover:from-red-700 hover:to-yellow-600 transition-all"
+                  >
+                    अपना परिवर्तन शुरू करें
+                  </button>
                 </div>
-                <div className="w-64 h-48 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
+                <div className="w-full md:w-96 h-64 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
                   <video
                     className="w-full h-full object-cover"
                     src={Seven}
@@ -787,98 +803,11 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 💊 HOW TO USE */}
-      <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-              How to Use Testro Booster
-            </h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="bg-gray-800 p-8 rounded-xl border border-gray-700">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="text-4xl mb-4">💊</div>
-                    <h3 className="text-lg font-bold text-white mb-2">Dosage</h3>
-                    <p className="text-gray-300">1–2 capsules daily</p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="text-4xl mb-4">🥛</div>
-                    <h3 className="text-lg font-bold text-white mb-2">With</h3>
-                    <p className="text-gray-300">Paani ya doodh ke saath</p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="text-4xl mb-4">⏳</div>
-                    <h3 className="text-lg font-bold text-white mb-2">Duration</h3>
-                    <p className="text-gray-300">Regular use for best results</p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="text-4xl mb-4">⚠️</div>
-                    <h3 className="text-lg font-bold text-white mb-2">Note</h3>
-                    <p className="text-gray-300">Healthy lifestyle recommended</p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Image for Usage */}
-              <div className="flex items-center justify-center">
-                <div className="bg-gradient-to-br from-gray-800 to-black p-6 rounded-xl border border-gray-700 w-full">
-                  <div className="text-center mb-4">
-                    <h3 className="text-xl font-bold text-white mb-2">Daily Routine Made Easy</h3>
-                    <p className="text-gray-400">Simple to incorporate in your daily life</p>
-                  </div>
-                  <div className="w-full h-64 rounded-lg overflow-hidden border-2 border-yellow-500">
-                    <img 
-                      src={Five}
-                      alt="Daily Usage Demonstration"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 👥 WHO SHOULD USE */}
-      <section className="py-16 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-12">
-              Is Testro Booster Right for You?
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {userTypes.map((type, index) => (
-                <div 
-                  key={index}
-                  className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all"
-                >
-                  <div className="text-2xl mb-3 text-green-400">✔</div>
-                  <p className="text-gray-300">{type}</p>
-                </div>
-              ))}
-            </div>
-            
-            <div className="bg-gradient-to-r from-red-800 to-yellow-700 p-6 rounded-xl">
-              <p className="text-2xl font-bold text-white">
-                If you want to feel stronger, sharper & confident – this is for you.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ⭐ TESTIMONIALS */}
+      {/* ⭐ TESTIMONIALS - Updated */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-            What Our Customers Say
+            हमारे ग्राहक क्या कहते हैं
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -910,30 +839,27 @@ const HealthVedaMain = () => {
             ))}
           </div>
           
-          {/* Transformation Video Section */}
-          <div className="mt-12 bg-gradient-to-r from-gray-800 to-black p-8 rounded-xl border border-gray-700">
+          {/* Baba Ramdev Section */}
+          <div className="mt-12 bg-gradient-to-r from-orange-900/30 to-yellow-900/30 p-8 rounded-xl border border-yellow-700">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-8">
-                <h3 className="text-2xl font-bold text-white mb-3">Real Transformations</h3>
+                <h3 className="text-2xl font-bold text-white mb-3">बाबा रामदेव की सिफारिश</h3>
                 <p className="text-gray-300 mb-4">
-                  See actual results from our satisfied customers. These videos show the journey of transformation.
+                  "मेरा नाम बाबा रामदेव है, और मैं आपके सामने लाया हूँ लिंग का आकार बढ़ाने और संभोग की अवधि बढ़ाने का वैज्ञानिक तरीका।"
                 </p>
-                <button
-                  onClick={handleOrderClick}
-                  className="px-6 py-3 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-bold rounded-lg hover:from-red-700 hover:to-yellow-600 transition-all"
-                >
-                  Start Your Transformation
-                </button>
+                <div className="bg-yellow-900/50 p-4 rounded-lg">
+                  <p className="text-white font-bold">इस उपाय के कई स्पष्ट प्रभाव हैं:</p>
+                  <ul className="text-gray-300 mt-2 space-y-1">
+                    <li>• आपका लिंग लंबा और मोटा हो जाएगा</li>
+                    <li>• संभोग की अवधि कम से कम 20 मिनट तक बढ़ जाएगी</li>
+                    <li>• आपका यौन जीवन बेहतर हो जाएगा</li>
+                  </ul>
+                </div>
               </div>
-              <div className="w-full md:w-96 h-64 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
-                <video
-                  className="w-full h-full object-cover"
-                  src={One}
-                  muted
-                  loop
-                  autoPlay
-                  poster={Two}
-                />
+              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-yellow-500 shadow-xl">
+                <div className="w-full h-full bg-gradient-to-br from-orange-600 to-yellow-500 flex items-center justify-center">
+                  <span className="text-6xl">🧘</span>
+                </div>
               </div>
             </div>
           </div>
@@ -944,14 +870,14 @@ const HealthVedaMain = () => {
       <section className="py-12 bg-gradient-to-r from-red-900 via-black to-red-900">
         <div className="container mx-auto px-4 text-center">
           <div className="inline-block px-6 py-2 bg-yellow-500 text-black font-bold rounded-full mb-4 animate-pulse">
-            ⏰ Limited Time Offer Ends In
+            ⏰ सीमित समय ऑफर समाप्त हो रहा है
           </div>
           
           <div className="mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-              Hurry! Special Price Ends Soon
+              जल्दी करें! विशेष मूल्य जल्द समाप्त
             </h2>
-            <p className="text-gray-300">Order within the next {timer.hours}h {timer.minutes}m {timer.seconds}s to get 50% OFF</p>
+            <p className="text-gray-300">अगले {timer.hours}h {timer.minutes}m {timer.seconds}s के भीतर ऑर्डर करें और 70% छूट पाएं</p>
           </div>
           
           {/* Timer Display */}
@@ -961,21 +887,21 @@ const HealthVedaMain = () => {
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2 animate-pulse">
                   {formatTime(timer.hours)}
                 </div>
-                <div className="text-gray-300">Hours</div>
+                <div className="text-gray-300">घंटे</div>
               </div>
               
               <div className="bg-black bg-opacity-50 p-6 rounded-xl border-2 border-yellow-500">
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2 animate-pulse">
                   {formatTime(timer.minutes)}
                 </div>
-                <div className="text-gray-300">Minutes</div>
+                <div className="text-gray-300">मिनट</div>
               </div>
               
               <div className="bg-black bg-opacity-50 p-6 rounded-xl border-2 border-yellow-500">
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2 animate-pulse">
                   {formatTime(timer.seconds)}
                 </div>
-                <div className="text-gray-300">Seconds</div>
+                <div className="text-gray-300">सेकंड</div>
               </div>
             </div>
             
@@ -987,6 +913,17 @@ const HealthVedaMain = () => {
                 }}
               ></div>
             </div>
+            
+            {/* Stock Counter */}
+            <div className="mt-6 bg-red-900/30 p-4 rounded-lg border border-red-700">
+              <div className="flex items-center justify-center space-x-4">
+                <span className="text-2xl text-yellow-400">📦</span>
+                <div>
+                  <p className="text-white font-bold">सीमित स्टॉक उपलब्ध</p>
+                  <p className="text-gray-300">केवल 17 पैकेट बचे हैं</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -995,35 +932,54 @@ const HealthVedaMain = () => {
       <section className="py-16 bg-gradient-to-r from-red-900 via-black to-red-900">
         <div className="container mx-auto px-4 text-center">
           <div className="inline-block px-6 py-2 bg-yellow-500 text-black font-bold rounded-full mb-6 animate-pulse">
-            🔥 Limited Stock Available!
+            🔥 आज ही ऑर्डर करें!
           </div>
           
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Get Testro Booster at Special Price Today
+            आज ही Testro Booster विशेष मूल्य पर पाएं
           </h2>
           
           <div className="max-w-2xl mx-auto mb-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="bg-black bg-opacity-50 p-4 rounded-xl">
                 <div className="text-2xl font-bold text-white">🚚</div>
-                <div className="text-white font-semibold">Fast Delivery</div>
+                <div className="text-white font-semibold">मुफ्त शिपिंग</div>
+                <div className="text-gray-300 text-sm">प्रीपेड ऑर्डर पर</div>
               </div>
               <div className="bg-black bg-opacity-50 p-4 rounded-xl">
                 <div className="text-2xl font-bold text-white">💯</div>
-                <div className="text-white font-semibold">Quality Assured</div>
+                <div className="text-white font-semibold">गुणवत्ता आश्वासन</div>
+                <div className="text-gray-300 text-sm">AYUSH/FSASI एप्रूव्ड</div>
               </div>
             </div>
             
-            {/* Timer in offer section */}
-            <div className="bg-black bg-opacity-70 p-4 rounded-xl mb-6 border border-yellow-500">
+            {/* Price Comparison */}
+            <div className="bg-black bg-opacity-70 p-6 rounded-xl mb-6 border border-yellow-500">
+              <div className="flex justify-between items-center mb-4">
+                <div className="text-left">
+                  <p className="text-gray-400">पुरानी कीमत</p>
+                  <p className="text-2xl line-through text-gray-300">₹5000</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-green-400 font-bold">70% छूट</p>
+                  <div className="w-32 h-2 bg-gray-700 rounded-full overflow-hidden mt-2">
+                    <div className="h-full bg-gradient-to-r from-green-500 to-yellow-500 w-3/4"></div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-gray-400">नई कीमत</p>
+                  <p className="text-3xl font-bold text-yellow-400">₹1485</p>
+                </div>
+              </div>
+              
               <div className="flex items-center justify-center space-x-4 mb-2">
                 <span className="text-2xl text-yellow-400">⏰</span>
-                <span className="text-white font-bold">Offer Ends In:</span>
+                <span className="text-white font-bold">ऑफर समाप्ति:</span>
                 <span className="text-red-300 font-bold text-xl">
                   {formatTime(timer.hours)}:{formatTime(timer.minutes)}:{formatTime(timer.seconds)}
                 </span>
               </div>
-              <p className="text-gray-300 text-sm">Hurry! Only 12 units left in stock</p>
+              <p className="text-gray-300 text-sm">जल्दी करें! स्टॉक समाप्त हो रहा है</p>
             </div>
           </div>
 
@@ -1031,20 +987,39 @@ const HealthVedaMain = () => {
             onClick={handleOrderClick}
             className="px-12 py-6 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-bold text-2xl rounded-lg hover:from-red-700 hover:to-yellow-600 transition-all shadow-2xl hover:shadow-3xl transform hover:scale-105 mb-6 animate-bounce"
           >
-            🟥 ORDER NOW BEFORE TIMER ENDS
+            🟥 अभी ऑर्डर करें - ₹1485 में
           </button>
           
           <p className="text-gray-300">
-            Special discount ending soon. Limited stock available!
+            स्पेशल डिस्काउंट जल्द समाप्त। गारंटीड सेफ चेकआउट के साथ सुरक्षित भुगतान।
           </p>
+          
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
+            <div className="text-center">
+              <div className="text-3xl">💳</div>
+              <p className="text-gray-300 text-sm">VISA</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl">💳</div>
+              <p className="text-gray-300 text-sm">Mastercard</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl">🏦</div>
+              <p className="text-gray-300 text-sm">NET Banking</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl">📱</div>
+              <p className="text-gray-300 text-sm">PhonePe</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ❓ FAQ SECTION */}
+      {/* ❓ FAQ SECTION - Updated */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-            Frequently Asked Questions
+            अक्सर पूछे जाने वाले प्रश्न
           </h2>
           
           <div className="max-w-3xl mx-auto space-y-6">
@@ -1063,6 +1038,18 @@ const HealthVedaMain = () => {
                 </p>
               </div>
             ))}
+            
+            {/* Additional FAQ */}
+            <div className="bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-yellow-500 transition-all">
+              <h3 className="text-lg font-semibold text-white mb-3 flex items-start">
+                <span className="text-yellow-400 mr-3">Q.</span>
+                क्या नकली प्रोडक्ट से बचने का कोई तरीका है?
+              </h3>
+              <p className="text-gray-300 flex items-start">
+                <span className="text-green-400 mr-3">👉</span>
+                अब Testro Booster के कई नकली प्रोडक्ट बनने लगे हैं इसलिए इसे केवल सप्लायर की ऑफिशियल साइट से ही ऑर्डर करें। नीचे दी गई लिंक पर क्लिक करके आपको एक क्लीनिकली टेस्ट किया हुआ Testro Booster इसके एकमात्र ऑफिशियल सप्लायर से 50% छूट पर मिलेगा।
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -1076,19 +1063,19 @@ const HealthVedaMain = () => {
                 TESTRO BOOSTER
               </h3>
               <p className="text-gray-400">
-                Premium male vitality support formula for modern lifestyle.
+                लिंग का आकार बढ़ाने और संभोग की अवधि बढ़ाने का वैज्ञानिक तरीका। स्वास्थ्य और परिवार कल्याण मंत्रालय द्वारा प्रमाणित।
               </p>
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4">Quick Contact</h4>
+              <h4 className="text-lg font-semibold mb-4">त्वरित संपर्क</h4>
               <ul className="space-y-2">
                 <li>
                   <button 
                     onClick={handleCallClick}
                     className="text-gray-400 hover:text-yellow-400 transition flex items-center"
                   >
-                    📞 Call Now: +91 {phoneNumber}
+                    📞 कॉल करें: +91 {phoneNumber}
                   </button>
                 </li>
                 <li>
@@ -1096,7 +1083,7 @@ const HealthVedaMain = () => {
                     onClick={handleWhatsAppClick}
                     className="text-gray-400 hover:text-yellow-400 transition flex items-center"
                   >
-                    💬 WhatsApp: +91 {phoneNumber}
+                    💬 व्हाट्सएप: +91 {phoneNumber}
                   </button>
                 </li>
                 <li className="text-gray-400">✉️ support@testrobooster.com</li>
@@ -1104,34 +1091,36 @@ const HealthVedaMain = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4">About Us</h4>
+              <h4 className="text-lg font-semibold mb-4">हमारे बारे में</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">Our Story</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">Mission</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">Quality Standards</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">हमारी कहानी</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">मिशन</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">गुणवत्ता मानक</a></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4">Legal</h4>
+              <h4 className="text-lg font-semibold mb-4">कानूनी</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">Privacy Policy</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">Terms & Conditions</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">Shipping Policy</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">गोपनीयता नीति</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">नियम और शर्तें</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">शिपिंग नीति</a></li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-gray-800 pt-8 text-center">
-            <div className="flex items-center justify-center mb-4 text-sm">
-              <span className="bg-green-800 text-white px-3 py-1 rounded-full mr-2">🔞</span>
-              <span className="text-gray-300">Age Verified Content | 18+ Only</span>
+            <div className="flex flex-col md:flex-row items-center justify-center mb-4 text-sm space-y-2 md:space-y-0 md:space-x-4">
+              <span className="bg-green-800 text-white px-3 py-1 rounded-full">🔞</span>
+              <span className="text-gray-300">आयु सत्यापित सामग्री | 18+ केवल</span>
+              <span className="bg-blue-800 text-white px-3 py-1 rounded-full">🇮🇳</span>
+              <span className="text-gray-300">मेड इन इंडिया | AYUSH/FSASI एप्रूव्ड</span>
             </div>
             <p className="text-gray-400 text-sm mb-4">
-              ⚠️ Disclaimer: Testro Booster is a wellness supplement. These statements have not been evaluated by any medical authority. This product is not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Consult your healthcare professional before use.
+              ⚠️ अस्वीकरण: Testro Booster एक वेलनेस सप्लीमेंट है। ये बयान किसी भी चिकित्सा प्राधिकरण द्वारा मूल्यांकित नहीं किए गए हैं। यह उत्पाद किसी भी बीमारी का निदान, इलाज, इलाज या रोकथाम करने के लिए अभिप्रेत नहीं है। परिणाम भिन्न हो सकते हैं। उपयोग से पहले अपने स्वास्थ्य देखभाल पेशेवर से परामर्श करें।
             </p>
             <p className="text-gray-500">
-              © {new Date().getFullYear()} Testro Booster. All rights reserved.
+              © {new Date().getFullYear()} Testro Booster. सर्वाधिकार सुरक्षित।
             </p>
           </div>
         </div>
