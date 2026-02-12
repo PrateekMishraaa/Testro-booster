@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Veda from "../assets/testro.jpeg";
 import Dawai from "../assets/dawai.jpeg";
 import One from "../assets/11059.mp4";
+import NewImgOne from "../assets/newimg.mp4";
+import NewImgTwo from "../assets/newimg2.mp4";
 import Two from "../assets/11061.jpg";
 import Three from "../assets/11064.jpg";
 import Four from "../assets/11067.mp4";
@@ -13,7 +15,7 @@ import Seven from "../assets/11074.mp4";
 import Eight from "../assets/11076.mp4";
 import Nine from "../assets/11078.jpg";
 import Ten from "../assets/11081.mp4";
-import BabaRamdev from "../assets/baba.jpeg"; // नई Baba Ramdev फोटो जोड़ें
+import BabaRamdev from "../assets/baba.jpeg";
 
 const HealthVedaMain = () => {
   const navigate = useNavigate();
@@ -200,8 +202,10 @@ const HealthVedaMain = () => {
     }
   ];
 
-  // Media Gallery Data
+  // Media Gallery Data - New videos added
   const mediaGallery = [
+    { type: 'video', src: NewImgOne, title: 'शुरुआती परिणाम', desc: 'पहले 7 दिनों में बदलाव', id: 'newimg-video-1' },
+    { type: 'video', src: NewImgTwo, title: 'पूर्ण परिवर्तन', desc: '12 दिनों का अद्भुत परिणाम', id: 'newimg-video-2' },
     { type: 'video', src: One, title: '12 दिनों में परिवर्तन', desc: '8-9 सेमी बढ़ोतरी', id: 'video-1' },
     { type: 'image', src: Three, title: 'प्राकृतिक सामग्री', desc: 'शुद्ध और प्रभावी', id: 'image-3' },
     { type: 'image', src: Five, title: 'Testro Booster', desc: 'आसान निगलने योग्य', id: 'image-5' },
@@ -317,7 +321,7 @@ const HealthVedaMain = () => {
         ✅ Age Verified | Welcome to Testro Booster
       </div>
 
-      {/* 🔥 HERO SECTION - Updated with new content */}
+      {/* 🔥 HERO SECTION */}
       <section className="relative bg-gradient-to-b from-gray-900 via-black to-gray-900 overflow-hidden">
         {/* Gold accents */}
         <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-yellow-600/10 to-transparent rounded-full blur-3xl"></div>
@@ -429,7 +433,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🎬 MEDIA GALLERY SECTION */}
+      {/* 🎬 MEDIA GALLERY SECTION - NEW VIDEOS INCLUDED */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -490,7 +494,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* ⚠️ PROBLEM AWARENESS SECTION - Updated */}
+      {/* ⚠️ PROBLEM AWARENESS SECTION */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center mb-12">
@@ -520,7 +524,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🔧 SOLUTION SECTION - Updated */}
+      {/* 🔧 SOLUTION SECTION */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -615,7 +619,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🎯 KEY BENEFITS SECTION - Updated */}
+      {/* 🎯 KEY BENEFITS SECTION */}
       <section className="py-16 bg-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -744,7 +748,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🔄 HOW IT WORKS with Video - Updated */}
+      {/* 🔄 HOW IT WORKS with Video - NEW VIDEOS ADDED */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -770,6 +774,54 @@ const HealthVedaMain = () => {
                   <p className="text-gray-400 mb-6">
                     {step.desc}
                   </p>
+                  
+                  {/* Video in Step 1 - New Video */}
+                  {step.step === '1' && (
+                    <div className="mt-4">
+                      <div className="w-full h-48 rounded-lg overflow-hidden border-2 border-yellow-500">
+                        <video
+                          className="w-full h-full object-cover"
+                          src={NewImgOne}
+                          muted
+                          loop
+                          autoPlay
+                        />
+                      </div>
+                      <p className="text-gray-400 text-sm mt-2">शुरुआती परिणाम - 7 दिनों में</p>
+                    </div>
+                  )}
+                  
+                  {/* Video in Step 2 - New Video */}
+                  {step.step === '2' && (
+                    <div className="mt-4">
+                      <div className="w-full h-48 rounded-lg overflow-hidden border-2 border-yellow-500">
+                        <video
+                          className="w-full h-full object-cover"
+                          src={NewImgTwo}
+                          muted
+                          loop
+                          autoPlay
+                        />
+                      </div>
+                      <p className="text-gray-400 text-sm mt-2">रक्त धमनियाँ चौड़ी होती हैं</p>
+                    </div>
+                  )}
+                  
+                  {/* Video in Step 3 */}
+                  {step.step === '3' && (
+                    <div className="mt-4">
+                      <div className="w-full h-48 rounded-lg overflow-hidden border-2 border-yellow-500">
+                        <video
+                          className="w-full h-full object-cover"
+                          src={Four}
+                          muted
+                          loop
+                          autoPlay
+                        />
+                      </div>
+                      <p className="text-gray-400 text-sm mt-2">फास्ट अब्जॉर्प्शन डेमो</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -804,7 +856,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* ⭐ TESTIMONIALS - Updated */}
+      {/* ⭐ TESTIMONIALS */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -840,6 +892,34 @@ const HealthVedaMain = () => {
             ))}
           </div>
           
+          {/* Transformation Video Section */}
+          <div className="mt-12 bg-gradient-to-r from-gray-800 to-black p-8 rounded-xl border border-gray-700">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-6 md:mb-0 md:mr-8">
+                <h3 className="text-2xl font-bold text-white mb-3">रियल ट्रांसफॉर्मेशन</h3>
+                <p className="text-gray-300 mb-4">
+                  हमारे संतुष्ट ग्राहकों के वास्तविक परिणाम देखें। ये वीडियो परिवर्तन की यात्रा दिखाते हैं।
+                </p>
+                <button
+                  onClick={handleOrderClick}
+                  className="px-6 py-3 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-bold rounded-lg hover:from-red-700 hover:to-yellow-600 transition-all"
+                >
+                  अपना परिवर्तन शुरू करें
+                </button>
+              </div>
+              <div className="w-full md:w-96 h-64 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-xl">
+                <video
+                  className="w-full h-full object-cover"
+                  src={One}
+                  muted
+                  loop
+                  autoPlay
+                  poster={Two}
+                />
+              </div>
+            </div>
+          </div>
+          
           {/* Baba Ramdev Section WITH PHOTO */}
           <div className="mt-12 bg-gradient-to-r from-orange-900/30 to-yellow-900/30 p-8 rounded-xl border border-yellow-700">
             <div className="flex flex-col md:flex-row items-center justify-between">
@@ -857,14 +937,14 @@ const HealthVedaMain = () => {
                   </ul>
                 </div>
               </div>
-              <div className="w-64 h-64 rounded-lg overflow-hidden border-4 border-yellow-500 shadow-xl">
+              <div className="relative w-64 h-64 rounded-lg overflow-hidden border-4 border-yellow-500 shadow-xl">
                 <img 
                   src={BabaRamdev}
                   alt="Baba Ramdev"
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D';
+                    e.target.src = 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80';
                   }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 text-center">
@@ -1026,7 +1106,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* ❓ FAQ SECTION - Updated */}
+      {/* ❓ FAQ SECTION */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -1106,7 +1186,7 @@ const HealthVedaMain = () => {
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">हमारी कहानी</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">मिशन</a></li>
-                <li><a href="#" className="text-gray400 hover:text-yellow-400 transition">गुणवत्ता मानक</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-yellow-400 transition">गुणवत्ता मानक</a></li>
               </ul>
             </div>
             
