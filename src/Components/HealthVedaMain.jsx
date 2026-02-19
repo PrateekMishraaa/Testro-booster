@@ -202,7 +202,7 @@ const HealthVedaMain = () => {
     }
   ];
 
-  // Media Gallery Data - New videos added
+  // Media Gallery Data - Original media
   const mediaGallery = [
     { type: 'video', src: NewImgOne, title: 'शुरुआती परिणाम', desc: 'पहले 7 दिनों में बदलाव', id: 'newimg-video-1' },
     { type: 'video', src: NewImgTwo, title: 'पूर्ण परिवर्तन', desc: '12 दिनों का अद्भुत परिणाम', id: 'newimg-video-2' },
@@ -210,6 +210,65 @@ const HealthVedaMain = () => {
     { type: 'image', src: Three, title: 'प्राकृतिक सामग्री', desc: 'शुद्ध और प्रभावी', id: 'image-3' },
     { type: 'image', src: Five, title: 'Testro Booster', desc: 'आसान निगलने योग्य', id: 'image-5' },
     { type: 'video', src: Four, title: 'कार्य प्रणाली', desc: 'वैज्ञानिक तरीका', id: 'video-2' },
+    
+    /* DUPLICATE MEDIA ENTRIES - ADD THESE TO INCLUDE DUPLICATES */
+    // Duplicate of NewImgOne
+    { type: 'video', src: NewImgOne, title: 'शुरुआती परिणाम (दोहराव)', desc: 'पहले सप्ताह में परिवर्तन', id: 'newimg-video-1-duplicate' },
+    
+    // Duplicate of NewImgTwo
+    { type: 'video', src: NewImgTwo, title: 'पूर्ण परिवर्तन (दोहराव)', desc: 'दूसरे सप्ताह में बदलाव', id: 'newimg-video-2-duplicate' },
+    
+    // Duplicate of One
+    { type: 'video', src: One, title: 'परिणाम वीडियो', desc: 'वास्तविक उपयोगकर्ता परिणाम', id: 'video-1-duplicate' },
+    
+    // Duplicate of Three
+    { type: 'image', src: Three, title: 'प्राकृतिक सामग्री', desc: 'शुद्ध आयुर्वेदिक तत्व', id: 'image-3-duplicate' },
+    
+    // Duplicate of Five
+    { type: 'image', src: Five, title: 'प्रीमियम कैप्सूल', desc: 'आसान सेवन', id: 'image-5-duplicate' },
+    
+    // Duplicate of Four
+    { type: 'video', src: Four, title: 'कार्य प्रणाली (दोहराव)', desc: 'वैज्ञानिक प्रक्रिया', id: 'video-2-duplicate' },
+    
+    // Duplicate of Two (image)
+    { type: 'image', src: Two, title: 'पैकेजिंग', desc: 'प्रीमियम पैकेजिंग', id: 'image-2-duplicate' },
+    
+    // Duplicate of Six (image)
+    { type: 'image', src: Six, title: 'उत्पाद छवि', desc: 'Testro Booster बॉटल', id: 'image-6-duplicate' },
+    
+    // Duplicate of Seven (video)
+    { type: 'video', src: Seven, title: 'परिणाम वीडियो 2', desc: 'वास्तविक परिणाम', id: 'video-7-duplicate' },
+    
+    // Duplicate of Eight (video)
+    { type: 'video', src: Eight, title: 'परिणाम वीडियो 3', desc: 'संतुष्ट ग्राहक', id: 'video-8-duplicate' },
+    
+    // Duplicate of Nine (image)
+    { type: 'image', src: Nine, title: 'उत्पाद छवि 2', desc: 'विभिन्न कोण से', id: 'image-9-duplicate' },
+    
+    // Duplicate of Ten (video)
+    { type: 'video', src: Ten, title: 'परिणाम वीडियो 4', desc: '12 दिनों का परिणाम', id: 'video-10-duplicate' },
+  ];
+
+  // Additional Media Row 1 - More duplicates for variety
+  const additionalMediaRow1 = [
+    /* ADDITIONAL DUPLICATES FOR MORE VARIETY */
+    { type: 'image', src: Three, title: 'प्राकृतिक अर्क', desc: 'शुद्ध जड़ी बूटियां', id: 'image-3-extra-1' },
+    { type: 'video', src: One, title: 'परिणाम प्रदर्शन', desc: 'पहले और बाद में', id: 'video-1-extra-1' },
+    { type: 'image', src: Five, title: 'कैप्सूल क्लोजअप', desc: 'प्रीमियम क्वालिटी', id: 'image-5-extra-1' },
+    { type: 'video', src: Four, title: 'कार्यप्रणाली डेमो', desc: 'वैज्ञानिक व्याख्या', id: 'video-2-extra-1' },
+    { type: 'image', src: Two, title: 'पैकेजिंग डिजाइन', desc: 'प्रीमियम लुक', id: 'image-2-extra-1' },
+    { type: 'video', src: Seven, title: 'ग्राहक अनुभव', desc: 'वास्तविक समीक्षा', id: 'video-7-extra-1' },
+  ];
+
+  // Additional Media Row 2 - Even more duplicates
+  const additionalMediaRow2 = [
+    /* ADDITIONAL DUPLICATES ROW 2 */
+    { type: 'image', src: Six, title: 'बॉटल व्यू', desc: 'फ्रंट व्यू', id: 'image-6-extra-2' },
+    { type: 'video', src: Eight, title: 'उपयोग विधि', desc: 'कैसे उपयोग करें', id: 'video-8-extra-2' },
+    { type: 'image', src: Nine, title: 'बॉक्स छवि', desc: 'पैकेजिंग', id: 'image-9-extra-2' },
+    { type: 'video', src: Ten, title: 'परिणाम शोकेस', desc: 'अद्भुत परिणाम', id: 'video-10-extra-2' },
+    { type: 'image', src: Three, title: 'जड़ी बूटियां', desc: 'प्राकृतिक तत्व', id: 'image-3-extra-2' },
+    { type: 'video', src: NewImgOne, title: '7 दिन परिणाम', desc: 'शुरुआती बदलाव', id: 'newimg-video-1-extra-2' },
   ];
 
   // Don't render main content if age not verified or under 18
@@ -433,7 +492,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🎬 MEDIA GALLERY SECTION - NEW VIDEOS INCLUDED */}
+      {/* 🎬 MEDIA GALLERY SECTION - WITH DUPLICATES */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -443,7 +502,8 @@ const HealthVedaMain = () => {
             वास्तविक परिणाम, वास्तविक परिवर्तन, वास्तविक संतुष्टि
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {/* Main Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
             {mediaGallery.map((media, index) => (
               <div 
                 key={media.id}
@@ -490,6 +550,128 @@ const HealthVedaMain = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* DUPLICATE GALLERY - Additional Row 1 */}
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold text-center text-white mb-8">
+              और अधिक परिणाम देखें
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {additionalMediaRow1.map((media) => (
+                <div 
+                  key={media.id}
+                  className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-300"
+                >
+                  <div className="relative aspect-video">
+                    {media.type === 'video' ? (
+                      <video
+                        className="w-full h-full object-cover"
+                        src={media.src}
+                        muted
+                        loop
+                        autoPlay={isPlaying[media.id]}
+                        poster={Two}
+                      />
+                    ) : (
+                      <img
+                        src={media.src}
+                        alt={media.title}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-white font-bold mb-1">{media.title}</h3>
+                    <p className="text-gray-400 text-sm">{media.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* DUPLICATE GALLERY - Additional Row 2 */}
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold text-center text-white mb-8">
+              ग्राहकों के वास्तविक परिणाम
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {additionalMediaRow2.map((media) => (
+                <div 
+                  key={media.id}
+                  className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-300"
+                >
+                  <div className="relative aspect-video">
+                    {media.type === 'video' ? (
+                      <video
+                        className="w-full h-full object-cover"
+                        src={media.src}
+                        muted
+                        loop
+                        autoPlay={isPlaying[media.id]}
+                        poster={Two}
+                      />
+                    ) : (
+                      <img
+                        src={media.src}
+                        alt={media.title}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-white font-bold mb-1">{media.title}</h3>
+                    <p className="text-gray-400 text-sm">{media.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* DUPLICATE GALLERY - Compact Grid for More Repetition */}
+          <div className="mt-12 bg-gradient-to-r from-gray-800 to-black p-8 rounded-xl">
+            <h3 className="text-xl font-bold text-center text-white mb-6">
+              Testro Booster ट्रांसफॉर्मेशन गैलरी
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {/* More duplicates for visual density */}
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <img src={Two} alt="Gallery" className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <video src={One} muted loop autoPlay className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <img src={Three} alt="Gallery" className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <video src={Four} muted loop autoPlay className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <img src={Five} alt="Gallery" className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <img src={Six} alt="Gallery" className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <video src={Seven} muted loop autoPlay className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <video src={Eight} muted loop autoPlay className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <img src={Nine} alt="Gallery" className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <video src={Ten} muted loop autoPlay className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <video src={NewImgOne} muted loop autoPlay className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-lg overflow-hidden border border-gray-600">
+                <video src={NewImgTwo} muted loop autoPlay className="w-full h-full object-cover" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -564,6 +746,28 @@ const HealthVedaMain = () => {
                         Testro Booster के निर्देशों के अनुसार उपयोग से मिलने वाले नतीजे स्थायी रहते हैं। इसका असर निजी गुण-धर्मों पर निर्भर करता है लेकिन पहले नतीजे एक हफ्ते में ही नजर आने लगते हैं।
                       </p>
                     </div>
+                  </div>
+                </div>
+
+                {/* DUPLICATE IMAGE GALLERY IN SOLUTION SECTION */}
+                <div className="grid grid-cols-3 gap-2 mt-4">
+                  <div className="rounded-lg overflow-hidden border border-gray-700">
+                    <img src={Two} alt="Product" className="w-full h-20 object-cover" />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-gray-700">
+                    <img src={Three} alt="Product" className="w-full h-20 object-cover" />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-gray-700">
+                    <img src={Five} alt="Product" className="w-full h-20 object-cover" />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-gray-700">
+                    <img src={Six} alt="Product" className="w-full h-20 object-cover" />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-gray-700">
+                    <img src={Nine} alt="Product" className="w-full h-20 object-cover" />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-gray-700">
+                    <video src={One} muted loop autoPlay className="w-full h-20 object-cover" />
                   </div>
                 </div>
               </div>
@@ -646,6 +850,22 @@ const HealthVedaMain = () => {
                 </p>
               </div>
             ))}
+          </div>
+
+          {/* DUPLICATE MEDIA ROW IN BENEFITS */}
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="rounded-lg overflow-hidden border border-gray-700">
+              <video src={Four} muted loop autoPlay className="w-full h-32 object-cover" />
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-700">
+              <img src={Three} alt="Benefit" className="w-full h-32 object-cover" />
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-700">
+              <video src={Seven} muted loop autoPlay className="w-full h-32 object-cover" />
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-700">
+              <img src={Five} alt="Benefit" className="w-full h-32 object-cover" />
+            </div>
           </div>
         </div>
       </section>
@@ -741,6 +961,16 @@ const HealthVedaMain = () => {
                       <span className="text-gray-300">60 साल की उम्र में भी प्रभावी</span>
                     </div>
                   </div>
+
+                  {/* DUPLICATE IMAGES IN INGREDIENT SECTION */}
+                  <div className="grid grid-cols-2 gap-2 mt-4">
+                    <div className="rounded-lg overflow-hidden border border-gray-600">
+                      <img src={Six} alt="Ingredient" className="w-full h-16 object-cover" />
+                    </div>
+                    <div className="rounded-lg overflow-hidden border border-gray-600">
+                      <img src={Nine} alt="Ingredient" className="w-full h-16 object-cover" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -748,7 +978,7 @@ const HealthVedaMain = () => {
         </div>
       </section>
 
-      {/* 🔄 HOW IT WORKS with Video - NEW VIDEOS ADDED */}
+      {/* 🔄 HOW IT WORKS with Video - WITH DUPLICATES */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
@@ -852,6 +1082,19 @@ const HealthVedaMain = () => {
                 </div>
               </div>
             </div>
+
+            {/* DUPLICATE HOW IT WORKS GALLERY */}
+            <div className="mt-8 grid grid-cols-3 gap-4">
+              <div className="rounded-lg overflow-hidden border border-gray-700">
+                <video src={One} muted loop autoPlay className="w-full h-24 object-cover" />
+              </div>
+              <div className="rounded-lg overflow-hidden border border-gray-700">
+                <img src={Three} alt="Process" className="w-full h-24 object-cover" />
+              </div>
+              <div className="rounded-lg overflow-hidden border border-gray-700">
+                <video src={Eight} muted loop autoPlay className="w-full h-24 object-cover" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -952,6 +1195,22 @@ const HealthVedaMain = () => {
                   <p className="text-yellow-300 text-sm">योग गुरु और आयुर्वेद विशेषज्ञ</p>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* DUPLICATE TESTIMONIAL MEDIA */}
+          <div className="mt-8 grid grid-cols-4 gap-4">
+            <div className="rounded-lg overflow-hidden border border-gray-700">
+              <video src={Ten} muted loop autoPlay className="w-full h-20 object-cover" />
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-700">
+              <img src={Five} alt="Testimonial" className="w-full h-20 object-cover" />
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-700">
+              <video src={One} muted loop autoPlay className="w-full h-20 object-cover" />
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-700">
+              <img src={Two} alt="Testimonial" className="w-full h-20 object-cover" />
             </div>
           </div>
         </div>
@@ -1142,6 +1401,19 @@ const HealthVedaMain = () => {
               </p>
             </div>
           </div>
+
+          {/* DUPLICATE FAQ MEDIA */}
+          <div className="mt-8 flex justify-center gap-4">
+            <div className="w-16 h-16 rounded-lg overflow-hidden border border-gray-700">
+              <img src={Five} alt="FAQ" className="w-full h-full object-cover" />
+            </div>
+            <div className="w-16 h-16 rounded-lg overflow-hidden border border-gray-700">
+              <img src={Two} alt="FAQ" className="w-full h-full object-cover" />
+            </div>
+            <div className="w-16 h-16 rounded-lg overflow-hidden border border-gray-700">
+              <video src={One} muted loop autoPlay className="w-full h-full object-cover" />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1213,6 +1485,28 @@ const HealthVedaMain = () => {
             <p className="text-gray-500">
               © {new Date().getFullYear()} Testro Booster. सर्वाधिकार सुरक्षित।
             </p>
+          </div>
+
+          {/* FOOTER DUPLICATE GALLERY */}
+          <div className="mt-8 grid grid-cols-6 gap-2">
+            <div className="rounded overflow-hidden border border-gray-700">
+              <img src={Two} alt="Footer" className="w-full h-12 object-cover" />
+            </div>
+            <div className="rounded overflow-hidden border border-gray-700">
+              <img src={Three} alt="Footer" className="w-full h-12 object-cover" />
+            </div>
+            <div className="rounded overflow-hidden border border-gray-700">
+              <img src={Five} alt="Footer" className="w-full h-12 object-cover" />
+            </div>
+            <div className="rounded overflow-hidden border border-gray-700">
+              <img src={Six} alt="Footer" className="w-full h-12 object-cover" />
+            </div>
+            <div className="rounded overflow-hidden border border-gray-700">
+              <img src={Nine} alt="Footer" className="w-full h-12 object-cover" />
+            </div>
+            <div className="rounded overflow-hidden border border-gray-700">
+              <video src={One} muted loop autoPlay className="w-full h-12 object-cover" />
+            </div>
           </div>
         </div>
       </footer>
