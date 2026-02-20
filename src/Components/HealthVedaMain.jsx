@@ -386,6 +386,30 @@ const HealthVedaMain = () => {
         ✅ Age Verified | Welcome to Testro Booster
       </div>
 
+      {/* 🚚 CASH ON DELIVERY HEADER */}
+      <div className="bg-gradient-to-r from-green-900 via-green-700 to-green-900 text-white py-4 border-b-2 border-yellow-400 shadow-lg">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+            <div className="flex items-center gap-2">
+              <span className="text-3xl animate-bounce">💵</span>
+              <span className="text-2xl md:text-3xl font-extrabold">कैश ऑन डिलीवरी</span>
+              <span className="text-3xl animate-bounce">🚚</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="bg-yellow-400 text-black px-4 py-1 rounded-full font-bold text-sm md:text-base">
+                घर पहुंचने पर भुगतान करें
+              </div>
+              <div className="bg-red-600 text-white px-4 py-1 rounded-full font-bold text-sm md:text-base animate-pulse">
+                कोई अग्रिम भुगतान नहीं
+              </div>
+            </div>
+          </div>
+          <div className="text-center mt-2 text-green-200 text-sm md:text-base">
+            ✓ सुरक्षित डिलीवरी ✓ ऑर्डर खोलकर देखें ✓ पैसे पहले चुकाएं नहीं
+          </div>
+        </div>
+      </div>
+
       {/* 🔥 HERO SECTION */}
       <section className="relative bg-gradient-to-b from-gray-900 via-black to-gray-900 overflow-hidden">
         {/* Gold accents */}
@@ -668,7 +692,7 @@ const HealthVedaMain = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Left - Ingredients Grid */}
               <div>
-                <div className="mb-8">
+                {/* <div className="mb-8">
                   <div className="bg-gradient-to-br from-gray-800 to-black p-6 rounded-xl border border-gray-700">
                     <div className="flex flex-col items-center">
                       <div className="w-48 h-48 mb-4 rounded-lg overflow-hidden border-2 border-yellow-500 shadow-lg">
@@ -686,7 +710,7 @@ const HealthVedaMain = () => {
                       <p className="text-gray-400">शुद्ध आयुर्वेदिक तत्व</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                   {ingredients.map((ingredient, index) => (
