@@ -499,66 +499,7 @@ const HealthVedaMain = () => {
       </section>
 
       {/* 🎬 MEDIA GALLERY SECTION */}
-      <section className="py-16 bg-gradient-to-b from-black to-gray-900">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-            देखें Testro Booster का जादू
-          </h2>
-          <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            वास्तविक परिणाम, वास्तविक परिवर्तन, वास्तविक संतुष्टि
-          </p>
-          
-          {/* Main Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {mediaGallery.map((media, index) => (
-              <div 
-                key={media.id}
-                className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-300 hover:transform hover:-translate-y-1"
-              >
-                <div className="relative aspect-video">
-                  {media.type === 'video' ? (
-                    <>
-                      <video
-                        className="w-full h-full object-cover"
-                        src={media.src}
-                        muted
-                        loop
-                        autoPlay={isPlaying[media.id]}
-                        poster={Three} // Changed poster to a different image
-                        onClick={() => toggleVideoPlay(media.id)}
-                      />
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                        <button
-                          onClick={() => toggleVideoPlay(media.id)}
-                          className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-all"
-                        >
-                          <span className="text-white text-2xl">
-                            {isPlaying[media.id] ? '⏸️' : '▶️'}
-                          </span>
-                        </button>
-                      </div>
-                    </>
-                  ) : (
-                    <img
-                      src={media.src}
-                      alt={media.title}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = `https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=80&ixid=${index}`;
-                      }}
-                    />
-                  )}
-                </div>
-                <div className="p-4">
-                  <h3 className="text-white font-bold mb-1">{media.title}</h3>
-                  <p className="text-gray-400 text-sm">{media.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* ⚠️ PROBLEM AWARENESS SECTION */}
       <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
